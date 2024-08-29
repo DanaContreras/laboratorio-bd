@@ -2,7 +2,6 @@
 	- ver tema de politicas si son adecuadas
 	- ver opciones de los estados
 */
-
 /*DROP TABLE IF EXISTS personalClinico;
 DROP TABLE IF EXISTS administrativo;
 DROP TABLE IF EXISTS profesional;
@@ -120,7 +119,7 @@ CREATE TABLE evolucion (
 	PRIMARY KEY (numeroEvolucion, dni,tipoDni),
 	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE RESTRICT ON DELETE RESTRICT,
 	FOREIGN KEY (legajoProfesional) REFERENCES profesional (legajo) ON UPDATE RESTRICT ON DELETE RESTRICT,
-	FOREIGN KEY (idDiagnostico) REFERENCES diagnostico (idDiagnostico) ON UPDATE CASCADE ON DELETE RESTRICT 
+	FOREIGN KEY (idDiagnostico) REFERENCES diagnosticoMultiaxial (idDiagnostico) ON UPDATE CASCADE ON DELETE RESTRICT 
 );
 
 CREATE TABLE tratamientoGravedad (
@@ -136,7 +135,7 @@ CREATE TABLE recibe (
 	tipoDni VARCHAR(20),
 	idTratamiento VARCHAR(20) NOT NULL,
 	PRIMARY KEY(fechaInicio, dni,tipoDni),
-	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE CASCADE
+	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (idTratamiento) REFERENCES tratamientoGravedad (idTratamiento) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
@@ -220,9 +219,9 @@ CREATE TABLE entrega_medicamento(
 	idMedicamento INT NOT NULL,
 	dni VARCHAR(15) NOT NULL,
 	tipoDni VARCHAR(15) NOT NULL,
-	FOREIGN KEY (legajoEnfermera) REFERENCES enfermera(legajo) ON UPDATE CASCADE ON DELETE RESTRICT
-	FOREIGN KEY (idReceta) REFERENCES recetaMedica (idReceta) ON UPDATE CASCADE ON DELETE RESTRICT
-	FOREIGN KEY (idMedicamento) REFERENCES medicamento(idMedicamento) ON UPDATE CASCADE ON DELETE RESTRICT
+	FOREIGN KEY (legajoEnfermera) REFERENCES enfermera(legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
+	FOREIGN KEY (idReceta) REFERENCES recetaMedica (idReceta) ON UPDATE CASCADE ON DELETE RESTRICT,
+	FOREIGN KEY (idMedicamento) REFERENCES medicamento(idMedicamento) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (dni,tipoDni) REFERENCES paciente(dni,tipoDni) ON UPDATE CASCADE ON DELETE RESTRICT
 
 );
