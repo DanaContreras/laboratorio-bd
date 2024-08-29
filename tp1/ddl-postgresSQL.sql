@@ -116,9 +116,11 @@ CREATE TABLE evolucion (
 	fecha DATE NOT NULL,
 	descripcion VARCHAR(200) NOT NULL,
 	legajoProfesional VARCHAR(15) NOT NULL,
+	idDiagnostico INT NOT NULL,
 	PRIMARY KEY (numeroEvolucion, dni,tipoDni),
 	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE RESTRICT ON DELETE RESTRICT,
-	FOREIGN KEY (legajoProfesional) REFERENCES profesional (legajo) ON UPDATE RESTRICT ON DELETE RESTRICT
+	FOREIGN KEY (legajoProfesional) REFERENCES profesional (legajo) ON UPDATE RESTRICT ON DELETE RESTRICT,
+	FOREIGN KEY (idDiagnostico) REFERENCES diagnostico (idDiagnostico) ON UPDATE CASCADE ON DELETE RESTRICT 
 );
 
 CREATE TABLE tratamientoGravedad (
