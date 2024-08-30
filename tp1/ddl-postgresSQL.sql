@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS asignado;
 -- Creacion de dominios
 CREATE DOMAIN estadoReceta AS VARCHAR(20)
 	DEFAULT 'ASIGNADO'
-	CHECK (VALUE IN ('ASIGNADO', 'AUTORIZADO',’NO AUTORIZADO’));
+	CHECK (VALUE IN ('ASIGNADO', 'AUTORIZADO','NO AUTORIZADO'));
 
 CREATE DOMAIN frecuenciaTratamiento AS VARCHAR(15)
 	CHECK (VALUE IN ('DIA COMPLETO', 'MEDIODIA', 'SEMANAL', 'QUINCENAL', 'MENSUAL'));
@@ -71,8 +71,7 @@ CREATE TABLE psicologo (
 
 CREATE TABLE registroBaja (
 	idRegistroBaja SERIAL PRIMARY KEY,
-	fecha DATE NOT NULL,
-	hora TIME NOT NULL,
+	fechaHora fechaHora NOT NULL,
 	motivo VARCHAR(100) NOT NULL,
 	legajoPersonal VARCHAR(15) NOT NULL,
 	legajoAdmin VARCHAR(15) NOT NULL,
@@ -111,8 +110,7 @@ CREATE TABLE evolucion (
 	tipoDni VARCHAR(15),
 	estado VARCHAR(50) NOT NULL,
 	motivoOcultado VARCHAR(50), 
-	hora TIME NOT NULL,
-	fecha DATE NOT NULL,
+	fechaHora fechaHora NOT NULL,
 	descripcion VARCHAR(200) NOT NULL,
 	legajoProfesional VARCHAR(15) NOT NULL,
 	idDiagnostico INT NOT NULL,
@@ -125,7 +123,7 @@ CREATE TABLE evolucion (
 CREATE TABLE tratamientoGravedad (
 	idTratamiento VARCHAR(20) PRIMARY KEY,
 	gravedad VARCHAR(30) NOT NULL CHECK (gravedad IN ('Grave intensivo', 'Grave medianamente intensivo', 'Ambulatorio')), -- VER
-	frecuencia VARCHAR(10) NOT NULL CHECK (frecuencia IN ('Diaria', 'Semanal', 'Quincenal', 'Mensual'))
+	frecuencia frecuenciaTratamiento NOT NULL
 );
 
 CREATE TABLE recibe (
@@ -169,8 +167,7 @@ CREATE TABLE contiene (
 CREATE TABLE turno (
 	idTurno SERIAL PRIMARY KEY,
 	estado VARCHAR(30) NOT NULL CHECK (estado IN ('Libre', 'Reservado', 'Cancelado', 'Atendido')),
-	hora TIME NOT NULL,
-	fecha DATE NOT NULL,
+	fechaHora fechaHora NOT NULL,
 	dni VARCHAR(10),
 	tipoDni VARCHAR(15),
 	legajoProfesional VARCHAR(15) NOT NULL,
@@ -184,7 +181,7 @@ CREATE TABLE recetaMedica (
 	idReceta SERIAL PRIMARY KEY,
 	fecha DATE NOT NULL,
 	descripcion VARCHAR(500),
-	estado VARCHAR(30) NOT NULL CHECK (estado IN ('Asignado', 'Entregado')),
+	estado estadoReceta,
 	legajoPsiquiatra VARCHAR(15) NOT NULL,
 	numeroEvolucion INT NOT NULL,
 	dni VARCHAR(10) NOT NULL,
@@ -211,8 +208,7 @@ CREATE TABLE stock (
 
 CREATE TABLE entrega_medicamento(
 	idEntrega SERIAL PRIMARY KEY,
-	fecha DATE NOT NULL,
-	hora DATE NOT NULL,
+	fechaHora fechaHora NOT NULL,
 	dosis VARCHAR(15) NOT NULL,
 	legajoEnfermera VARCHAR(15) NOT NULL,
 	idReceta INT NOT NULL,
@@ -238,14 +234,12 @@ CREATE TABLE dona (
 );
 
 CREATE TABLE sot (
-	fecha DATE,
-	hora TIME,
+	fechaHora fechaHora PRIMARY KEY,
 	motivoLlamado VARCHAR(50),
 	observacionLlamado VARCHAR(500) NOT NULL,
 	dni VARCHAR(10) NOT NULL,
 	tipoDni VARCHAR(15) NOT NULL,
 	legajoAcompaniante VARCHAR(15) NOT NULL,
-	PRIMARY KEY (fecha, hora),
 	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (legajoAcompaniante) REFERENCES acompanianteTerapeutico (legajo) ON UPDATE CASCADE ON DELETE RESTRICT
 );
