@@ -104,22 +104,6 @@ CREATE TABLE paciente (
 	foto TEXT
 );
 
-CREATE TABLE evolucion (
-	numeroEvolucion SERIAL,
-	dni VARCHAR(10),
-	tipoDni VARCHAR(15),
-	estado VARCHAR(50) NOT NULL,
-	motivoOcultado VARCHAR(50), 
-	fechaHora fechaHora NOT NULL,
-	descripcion VARCHAR(200) NOT NULL,
-	legajoProfesional VARCHAR(15) NOT NULL,
-	idDiagnostico INT NOT NULL,
-	PRIMARY KEY (numeroEvolucion, dni,tipoDni),
-	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE RESTRICT ON DELETE RESTRICT,
-	FOREIGN KEY (legajoProfesional) REFERENCES profesional (legajo) ON UPDATE RESTRICT ON DELETE RESTRICT,
-	FOREIGN KEY (idDiagnostico) REFERENCES diagnosticoMultiaxial (idDiagnostico) ON UPDATE CASCADE ON DELETE RESTRICT 
-);
-
 CREATE TABLE tratamientoGravedad (
 	idTratamiento VARCHAR(20) PRIMARY KEY,
 	gravedad VARCHAR(30) NOT NULL CHECK (gravedad IN ('Grave intensivo', 'Grave medianamente intensivo', 'Ambulatorio')), -- VER
@@ -162,6 +146,22 @@ CREATE TABLE contiene (
 	PRIMARY KEY(idDiagnostico, codigoNomenclador, codigoEje),
 	FOREIGN KEY (idDiagnostico) REFERENCES diagnosticoMultiaxial (idDiagnostico) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (codigoNomenclador, codigoEje) REFERENCES nomenclador (codigoNomenclador, codigoEje) ON UPDATE RESTRICT ON DELETE RESTRICT
+);
+
+CREATE TABLE evolucion (
+	numeroEvolucion SERIAL,
+	dni VARCHAR(10),
+	tipoDni VARCHAR(15),
+	estado VARCHAR(50) NOT NULL,
+	motivoOcultado VARCHAR(50), 
+	fechaHora fechaHora NOT NULL,
+	descripcion VARCHAR(200) NOT NULL,
+	legajoProfesional VARCHAR(15) NOT NULL,
+	idDiagnostico INT NOT NULL,
+	PRIMARY KEY (numeroEvolucion, dni,tipoDni),
+	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE RESTRICT ON DELETE RESTRICT,
+	FOREIGN KEY (legajoProfesional) REFERENCES profesional (legajo) ON UPDATE RESTRICT ON DELETE RESTRICT,
+	FOREIGN KEY (idDiagnostico) REFERENCES diagnosticoMultiaxial (idDiagnostico) ON UPDATE CASCADE ON DELETE RESTRICT 
 );
 
 CREATE TABLE turno (
