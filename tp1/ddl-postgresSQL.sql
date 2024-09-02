@@ -233,6 +233,16 @@ CREATE TABLE dona (
 	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+CREATE TABLE requiereDe(
+	dosis INT NOT NULL,
+	frecuencia VARCHAR(15) NOT NULL,
+	idReceta INT,
+	idMedicamento INT,
+	PRIMARY KEY (idReceta,idMedicamento),
+	FOREIGN KEY (idReceta) REFERENCES recetaMedica(idReceta) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (idMedicamento) REFERENCES medicamento(idMedicamento) ON UPDATE CASCADE ON DELETE RESTRICT
+)
+
 CREATE TABLE sot (
 	fechaHora fechaHora PRIMARY KEY,
 	motivoLlamado VARCHAR(50),
