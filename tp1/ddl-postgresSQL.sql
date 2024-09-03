@@ -70,7 +70,7 @@ CREATE TABLE psicologo (
 );
 
 CREATE TABLE registroBaja (
-	idRegistroBaja SERIAL PRIMARY KEY,
+	idRegistroBaja VARCHAR(15) PRIMARY KEY,
 	fechaHora fechaHora NOT NULL,
 	motivo VARCHAR(100) NOT NULL,
 	legajoPersonal VARCHAR(15) NOT NULL,
@@ -122,7 +122,7 @@ CREATE TABLE recibe (
 );
 
 CREATE TABLE diagnosticoMultiaxial (
-	idDiagnostico SERIAL PRIMARY KEY,
+	idDiagnostico VARCHAR(15) PRIMARY KEY,
 	estado VARCHAR(30) NOT NULL
 );
 
@@ -140,7 +140,7 @@ CREATE TABLE nomenclador (
 );
 
 CREATE TABLE contiene (
-	idDiagnostico INT,
+	idDiagnostico VARCHAR(15),
 	codigoNomenclador VARCHAR(20),
 	codigoEje VARCHAR(20),
 	PRIMARY KEY(idDiagnostico, codigoNomenclador, codigoEje),
@@ -149,7 +149,7 @@ CREATE TABLE contiene (
 );
 
 CREATE TABLE evolucion (
-	numeroEvolucion SERIAL,
+	numeroEvolucion VARCHAR(15),
 	dni VARCHAR(10),
 	tipoDni VARCHAR(15),
 	estado VARCHAR(50) NOT NULL,
@@ -157,7 +157,7 @@ CREATE TABLE evolucion (
 	fechaHora fechaHora NOT NULL,
 	descripcion VARCHAR(200) NOT NULL,
 	legajoProfesional VARCHAR(15) NOT NULL,
-	idDiagnostico INT NOT NULL,
+	idDiagnostico VARCHAR(15) NOT NULL,
 	PRIMARY KEY (numeroEvolucion, dni,tipoDni),
 	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE RESTRICT ON DELETE RESTRICT,
 	FOREIGN KEY (legajoProfesional) REFERENCES profesional (legajo) ON UPDATE RESTRICT ON DELETE RESTRICT,
@@ -166,7 +166,7 @@ CREATE TABLE evolucion (
 
 CREATE TABLE turno (
 	idTurno SERIAL PRIMARY KEY,
-	estado VARCHAR(30) NOT NULL CHECK (estado IN ('Libre', 'Reservado', 'Cancelado', 'Atendido')),
+	estado VARCHAR(30) NOT NULL CHECK (estado IN ('LIBRE', 'RESERVADO', 'CANCELADO', 'ATENDIDO')),
 	fechaHora fechaHora NOT NULL,
 	dni VARCHAR(10),
 	tipoDni VARCHAR(15),
@@ -178,12 +178,12 @@ CREATE TABLE turno (
 );
 
 CREATE TABLE recetaMedica (
-	idReceta SERIAL PRIMARY KEY,
+	idReceta VARCHAR(15) PRIMARY KEY,
 	fecha DATE NOT NULL,
 	descripcion VARCHAR(500),
 	estado estadoReceta,
 	legajoPsiquiatra VARCHAR(15) NOT NULL,
-	numeroEvolucion INT NOT NULL,
+	numeroEvolucion VARCHAR(15) NOT NULL,
 	dni VARCHAR(10) NOT NULL,
 	tipoDni VARCHAR(15) NOT NULL,
 	FOREIGN KEY (legajoPsiquiatra) REFERENCES psiquiatra (legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
@@ -191,7 +191,7 @@ CREATE TABLE recetaMedica (
 );
 
 CREATE TABLE medicamento (
-	idMedicamento SERIAL PRIMARY KEY,
+	idMedicamento VARCHAR(15) PRIMARY KEY,
 	nombre VARCHAR(50) NOT NULL,
 	dosis INT NOT NULL,
 	tipo VARCHAR(50) NOT NULL
@@ -200,19 +200,18 @@ CREATE TABLE medicamento (
 CREATE TABLE stock (
 	fecha DATE,
 	cantidad INT NOT NULL,
-	idMedicamento INT,
+	idMedicamento VARCHAR(15),
 	PRIMARY KEY (fecha, idMedicamento),
 	FOREIGN KEY (idMedicamento) REFERENCES medicamento (idMedicamento) ON UPDATE CASCADE ON DELETE CASCADE
 );
-
 
 CREATE TABLE entregaMedicamento(
 	idEntrega SERIAL PRIMARY KEY,
 	fechaHora fechaHora NOT NULL,
 	dosis VARCHAR(15) NOT NULL,
 	legajoEnfermera VARCHAR(15) NOT NULL,
-	idReceta INT NOT NULL,
-	idMedicamento INT NOT NULL,
+	idReceta VARCHAR(15) NOT NULL,
+	idMedicamento VARCHAR(15) NOT NULL,
 	dni VARCHAR(15) NOT NULL,
 	tipoDni VARCHAR(15) NOT NULL,
 	FOREIGN KEY (legajoEnfermera) REFERENCES enfermera(legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
@@ -225,7 +224,7 @@ CREATE TABLE entregaMedicamento(
 CREATE TABLE dona (
 	fechaDonado DATE,
 	cantEspecifica INT NOT NULL,
-	idMedicamento INT,
+	idMedicamento VARCHAR(15),
 	dni VARCHAR(10) NOT NULL,
 	tipoDni VARCHAR(15) NOT NULL,
 	PRIMARY KEY (fechaDonado, idMedicamento),
@@ -236,8 +235,8 @@ CREATE TABLE dona (
 CREATE TABLE requiereDe(
 	dosis INT NOT NULL,
 	frecuencia VARCHAR(15) NOT NULL,
-	idReceta INT,
-	idMedicamento INT,
+	idReceta VARCHAR(15),
+	idMedicamento VARCHAR(15),
 	PRIMARY KEY (idReceta,idMedicamento),
 	FOREIGN KEY (idReceta) REFERENCES recetaMedica(idReceta) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (idMedicamento) REFERENCES medicamento(idMedicamento) ON UPDATE CASCADE ON DELETE RESTRICT
