@@ -35,7 +35,7 @@ CREATE TABLE personalClinico (
 	fechaNac DATE,
 	fotoPerfil TEXT,
 	email VARCHAR(255) NOT NULL,
-	estado VARCHAR(6) NOT NULL CHECK (estado IN ('Activo', 'Baja'))
+	estado VARCHAR(6) NOT NULL CHECK (estado IN ('ACTIVO', 'BAJA'))
 );
 
 CREATE TABLE administrativo (
