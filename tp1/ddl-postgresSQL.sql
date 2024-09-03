@@ -206,7 +206,7 @@ CREATE TABLE stock (
 );
 
 
-CREATE TABLE entrega_medicamento(
+CREATE TABLE entregaMedicamento(
 	idEntrega SERIAL PRIMARY KEY,
 	fechaHora fechaHora NOT NULL,
 	dosis VARCHAR(15) NOT NULL,
