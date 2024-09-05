@@ -122,7 +122,7 @@ CREATE TABLE recibe (
 );
 
 CREATE TABLE diagnosticoMultiaxial (
-	idDiagnostico VARCHAR(15) PRIMARY KEY,
+	idDiagnostico INT PRIMARY KEY,
 	estado VARCHAR(30) NOT NULL
 );
 

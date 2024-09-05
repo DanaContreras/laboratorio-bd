@@ -23,12 +23,12 @@ VALUES  --
 
 INSERT INTO personalClinico (legajo, nombre, apellido, contrasenia, fechaNac, fotoPerfil, email, estado)
 VALUES 
-('ACO123456', 'Ana', 'Martínez', 'password123', '1985-05-15', 'https://example.com/fotoPerfil.jpg', 'ana.martinez@example.com', 'Activo'),
-('ADM001', 'Ana', 'Gómez', 'adminpass', '1985-05-22', 'foto2.jpg', 'ana.gomez@example.com', 'Activo'),
-('PSQ001', 'Javier', 'Sánchez', 'password456', '1995-02-20', 'https://example.com/fotoPerfilJavier.jpg', 'javier.sanchez@example.com', 'Activo'),
-('PSC003', 'Clara', 'Rodríguez', 'password789', '1975-11-25', 'https://example.com/fotoPerfilClara.jpg', 'clara.rodriguez@example.com', 'Activo'),
-('ENF001', 'Laura', 'González', 'password321', '1987-03-14', 'https://example.com/fotoLaura.jpg', 'laura.gonzalez@example.com', 'Activo'),
-('PSC002', 'Luis', 'Martínez', 'password654', '1992-11-30', 'https://example.com/fotoLuis.jpg', 'luis.martinez@example.com', 'Baja');
+('ACO123456', 'Ana', 'Martínez', 'password123', '1985-05-15', 'https://example.com/fotoPerfil.jpg', 'ana.martinez@example.com', 'ACTIVO'),
+('ADM001', 'Ana', 'Gómez', 'adminpass', '1985-05-22', 'foto2.jpg', 'ana.gomez@example.com', 'ACTIVO'),
+('PSQ001', 'Javier', 'Sánchez', 'password456', '1995-02-20', 'https://example.com/fotoPerfilJavier.jpg', 'javier.sanchez@example.com', 'ACTIVO'),
+('PSC003', 'Clara', 'Rodríguez', 'password789', '1975-11-25', 'https://example.com/fotoPerfilClara.jpg', 'clara.rodriguez@example.com', 'ACTIVO'),
+('ENF001', 'Laura', 'González', 'password321', '1987-03-14', 'https://example.com/fotoLaura.jpg', 'laura.gonzalez@example.com', 'ACTIVO'),
+('PSC002', 'Luis', 'Martínez', 'password654', '1992-11-30', 'https://example.com/fotoLuis.jpg', 'luis.martinez@example.com', 'BAJA');
 
 INSERT INTO profesional (legajo, matricula)
 VALUES 
@@ -66,7 +66,7 @@ VALUES ('ADM001');
 
 INSERT INTO turno (estado, fechaHora, dni, tipoDni, legajoProfesional, legajoAdmin)
 VALUES 
-    ('Libre', '2024-08-30 10:00:00', '65432109', 'DNI', 'ACO123456', 'ADM001');
+    ('LIBRE', '2024-08-30 10:00:00', '65432109', 'DNI', 'ACO123456', 'ADM001');
 
 -- relación de un paciente con una evolucion
 
@@ -80,33 +80,30 @@ VALUES
     ('NOM3', 'Descripción Nomenclador 3', 'EJE1'),
     ('NOM4','Descripción Nomenclador 4','EJE2');
 
-INSERT INTO diagnosticoMultiaxial (estado)
+INSERT INTO diagnosticoMultiaxial (idDiagnostico,estado)
 VALUES 
-    ('Estado 1'),
-    ('Estado 2'),
-    ('Estado 3'),
-    ('Estado 4');
+    ('Dig-1','Estado 1'),
+    ('Dig-2','Estado 2'),
+    ('Dig-3','Estado 3'),
+    ('Dig-4','Estado 4');
     
-    
--- Esta parte del script hay que hacerla manualmente
-SELECT idDiagnostico
-FROM diagnosticomultiaxial
+
     
 -- Resultado idDiagnostico 15
 
 INSERT INTO contiene (idDiagnostico, codigoNomenclador, codigoEje)
 VALUES 
-    (1, 'NOM3', 'EJE1'),
-    (2,'NOM4','EJE2'),
-    (3, 'NOM3', 'EJE1'),
-    (4, 'NOM4', 'EJE2');
+    ('Dig-1', 'NOM3', 'EJE1'),
+    ('Dig-2','NOM4','EJE2'),
+    ('Dig-3', 'NOM3', 'EJE1'),
+    ('Dig-4', 'NOM4', 'EJE2');
 
-INSERT INTO evolucion (dni, tipoDni, estado, motivoOcultado, fechaHora, descripcion, legajoProfesional, idDiagnostico)
+INSERT INTO evolucion (numeroEvolucion,dni, tipoDni, estado, motivoOcultado, fechaHora, descripcion, legajoProfesional, idDiagnostico)
 VALUES 
-('78901234', 'Cédula', 'Estable', 'N/A', '2024-08-29 09:00:00', 'El paciente muestra mejoras en su condición general y sigue el plan de tratamiento.', 'ACO123456', 1),
-('65432109', 'DNI', 'Mejorando', 'N/A', '2024-08-30 10:30:00', 'Paciente presenta mejoría en su estado general y se ajusta la medicación.', 'PSQ001', 2),
-('11223344', 'DNI', 'Estable', 'N/A', '2024-08-30 11:00:00', 'Paciente estable, se continúa tratamiento intensivo.', 'ENF001', 3),
-('22334455', 'DNI', 'Inestable', 'N/A', '2024-08-30 12:00:00', 'Paciente presenta episodios de ansiedad, se ajustará medicación.', 'PSQ001', 4);
+('EV-1','78901234', 'Cédula', 'Estable', 'N/A', '2024-08-29 09:00:00', 'El paciente muestra mejoras en su condición general y sigue el plan de tratamiento.', 'ACO123456', 'Dig-1'),
+('EV-2','65432109', 'DNI', 'Mejorando', 'N/A', '2024-08-30 10:30:00', 'Paciente presenta mejoría en su estado general y se ajusta la medicación.', 'PSQ001', 'Dig-2'),
+('EV-3','11223344', 'DNI', 'Estable', 'N/A', '2024-08-30 11:00:00', 'Paciente estable, se continúa tratamiento intensivo.', 'ENF001', 'Dig-3'),
+('EV-4','22334455', 'DNI', 'Inestable', 'N/A', '2024-08-30 12:00:00', 'Paciente presenta episodios de ansiedad, se ajustará medicación.', 'PSQ001', 'Dig-4');
 
 -- Obtener el número de evolución generado (asumimos que es 6 para este ejemplo)
 -- SELECT MAX(numeroEvolucion) AS numeroEvolucion FROM evolucion WHERE dni = '65432109' AND tipoDni = 'DNI';
@@ -114,9 +111,9 @@ VALUES
 
 INSERT INTO recetaMedica(idReceta, fecha,descripcion,estado,legajoPsiquiatra, numeroEvolucion,dni,tipoDni)
 VALUES
-('20315463', '2024-08-30', 'Tiene que tomar 50mg de Sertralina por dia', 'AUTORIZADO', 'PSQ001', 6, '65432109', 'DNI'),
-('20315464', '2024-08-30', 'Se ajusta la dosis de Sertralina a 100mg por día.', 'ASIGNADO', 'PSQ001', 7, '11223344', 'DNI'),
-('20315465', '2024-08-30', 'Paciente requiere 20mg de Diazepam antes de dormir.', 'NO AUTORIZADO', 'PSQ001', 8, '22334455', 'DNI');
+('20315463', '2024-08-30', 'Tiene que tomar 50mg de Sertralina por dia', 'AUTORIZADO', 'PSQ001', 'EV-2', '65432109', 'DNI'),
+('20315464', '2024-08-30', 'Se ajusta la dosis de Sertralina a 100mg por día.', 'ASIGNADO', 'PSQ001', 'EV-3', '11223344', 'DNI'),
+('20315465', '2024-08-30', 'Paciente requiere 20mg de Diazepam antes de dormir.', 'NO AUTORIZADO', 'PSQ001', 'EV-4', '22334455', 'DNI');
 
 INSERT INTO medicamento(idMedicamento,nombre,dosis,tipo)
 VALUES
@@ -141,3 +138,5 @@ VALUES
 (1, '2024-08-30 11:00:00', '50mg', 'ENF001', 20315463, 132153, '65432109', 'DNI'),
 (2, '2024-08-30 13:00:00', '100mg', 'ENF001', 20315464, 132155, '11223344', 'DNI'),
 (3, '2024-08-30 14:00:00', '20mg', 'ENF001', 20315465, 132154, '22334455', 'DNI');
+
+
