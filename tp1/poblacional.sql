@@ -1,3 +1,16 @@
+/*
+Para eliminar todos los datos de las tablas:
+DO $$ 
+DECLARE
+    r RECORD;
+BEGIN
+    FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = 'public') 
+    LOOP
+        EXECUTE 'TRUNCATE TABLE ' || r.tablename || ' RESTART IDENTITY CASCADE';
+    END LOOP;
+END $$;
+*/
+
 INSERT INTO paciente (dni, tipoDni, nombre, apellido, obraSocial, fechaNac, fechaIngreso, foto)
 VALUES 
 ('12345678', 'DNI', 'Juan', 'Pérez', 'OSDE', '1985-04-12', '2023-08-01', 'https://example.com/foto1.jpg'),
@@ -41,6 +54,11 @@ VALUES
 ('PSC002', 'MAT000654321'),
 ('PSC004', 'MAT000894546');
 
+INSERT INTO administrativo (legajo)
+VALUES 
+('ADM001'),
+('ADM002');
+
 INSERT INTO psiquiatra(legajo)
 VALUES
 ('PSQ001');
@@ -58,7 +76,6 @@ VALUES
 ('PSC004'),
 ('PSC002');
 
-
 INSERT INTO cargo(nombreCargo)
 VALUES
 ('Director');
@@ -75,12 +92,6 @@ VALUES
 INSERT INTO sot (fechaHora, motivoLlamado, observacionLlamado, dni, tipoDni, legajoAcompaniante)
 VALUES 
 ('2024-08-29 14:30:00', 'Consulta de tratamiento', 'Paciente se siente mejor pero necesita ajustar la medicación.', '87654321', 'Pasaporte', 'ACO123456');
-
-
-INSERT INTO administrativo (legajo)
-VALUES 
-('ADM001'),
-('ADM002');
 
 -- relacion de un paciente con un turno
 
@@ -159,5 +170,3 @@ VALUES
 (1, '2024-08-30 11:00:00', '50mg', 'ENF001', 20315463, 132153, '65432109', 'DNI'),
 (2, '2024-08-30 13:00:00', '100mg', 'ENF001', 20315464, 132155, '11223344', 'DNI'),
 (3, '2024-08-30 14:00:00', '20mg', 'ENF001', 20315465, 132154, '22334455', 'DNI');
-
-
