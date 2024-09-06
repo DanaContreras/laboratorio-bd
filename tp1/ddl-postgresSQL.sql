@@ -122,7 +122,7 @@ CREATE TABLE recibe (
 );
 
 CREATE TABLE diagnosticoMultiaxial (
-	idDiagnostico INT PRIMARY KEY,
+	idDiagnostico VARCHAR(15) PRIMARY KEY,
 	estado VARCHAR(30) NOT NULL
 );
 
@@ -240,7 +240,7 @@ CREATE TABLE requiereDe(
 	PRIMARY KEY (idReceta,idMedicamento),
 	FOREIGN KEY (idReceta) REFERENCES recetaMedica(idReceta) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (idMedicamento) REFERENCES medicamento(idMedicamento) ON UPDATE CASCADE ON DELETE RESTRICT
-)
+);
 
 CREATE TABLE sot (
 	fechaHora fechaHora PRIMARY KEY,
