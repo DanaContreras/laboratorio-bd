@@ -59,7 +59,50 @@ VALUES
     ('ENF001', 'Laura', 'González', 'password321', '1987-03-14', 'https://example.com/fotoLaura.jpg', 'laura.gonzalez@example.com', 'ACTIVO'),
     ('PSC002', 'Luis', 'Martínez', 'password654', '1992-11-30', 'https://example.com/fotoLuis.jpg', 'luis.martinez@example.com', 'BAJA'),
     ('PSC004', 'María', 'Pérez', 'securepass123', '1990-06-12', 'https://example.com/fotoMaria.jpg', 'maria.perez@example.com', 'ACTIVO'),
-    ('ADM002', 'Carlos', 'Fernández', 'adminsecure789', '1988-08-05', 'https://example.com/fotoCarlos.jpg', 'carlos.fernandez@example.com', 'ACTIVO');
+    ('ADM002', 'Carlos', 'Fernández', 'adminsecure789', '1988-08-05', 'https://example.com/fotoCarlos.jpg', 'carlos.fernandez@example.com', 'ACTIVO'),
+    ('ADM003', 'Laura', 'Sánchez', 'pass123', '1984-04-12', 'foto7.jpg', 'laura.sanchez@example.com', 'ACTIVO'),
+    ('ADM004', 'Javier', 'Torres', 'pass123', '1991-01-16', 'foto8.jpg', 'javier.torres@example.com', 'ACTIVO'),
+    ('ADM005', 'Marta', 'Romero', 'pass123', '1978-09-22', 'foto9.jpg', 'marta.romero@example.com', 'ACTIVO'),
+    ('ADM006', 'Fernando', 'García', 'pass123', '1989-05-30', 'foto10.jpg', 'fernando.garcia@example.com', 'ACTIVO'),
+    ('ADM007', 'Sofía', 'Méndez', 'pass123', '1993-12-15', 'foto11.jpg', 'sofia.mendez@example.com', 'ACTIVO'),
+    ('ADM008', 'Ricardo', 'Castro', 'pass123', '1981-06-20', 'foto12.jpg', 'ricardo.castro@example.com', 'ACTIVO'),
+    ('ADM009', 'Elena', 'Vázquez', 'pass123', '1987-10-05', 'foto13.jpg', 'elena.vazquez@example.com', 'ACTIVO'),
+    ('ADM010', 'Manuel', 'Hernández', 'pass123', '1992-03-18', 'foto14.jpg', 'manuel.hernandez@example.com', 'ACTIVO'),
+    ('PSQ002', 'Gabriela', 'Molina', 'pass123', '1983-07-10', 'foto15.jpg', 'gabriela.molina@example.com', 'ACTIVO'),
+    ('PSQ003', 'Ricardo', 'Morales', 'pass123', '1986-11-25', 'foto16.jpg', 'ricardo.morales@example.com', 'ACTIVO'),
+    ('PSQ004', 'Elena', 'Paredes', 'pass123', '1979-02-14', 'foto17.jpg', 'elena.paredes@example.com', 'ACTIVO'),
+    ('PSQ005', 'Diego', 'Rivas', 'pass123', '1995-08-30', 'foto18.jpg', 'diego.rivas@example.com', 'ACTIVO'),
+    ('PSQ006', 'Patricia', 'Navarro', 'pass123', '1980-06-15', 'foto19.jpg', 'patricia.navarro@example.com', 'ACTIVO'),
+    ('PSQ007', 'Jorge', 'Salazar', 'pass123', '1987-04-05', 'foto20.jpg', 'jorge.salazar@example.com', 'ACTIVO'),
+    ('PSQ008', 'Martín', 'García', 'pass123', '1983-12-22', 'foto21.jpg', 'martin.garcia@example.com', 'ACTIVO'),
+    ('PSQ009', 'Lucía', 'Vega', 'pass123', '1992-11-18', 'foto22.jpg', 'lucia.vega@example.com', 'ACTIVO'),
+    ('PSQ010', 'Esteban', 'Cruz', 'pass123', '1984-05-25', 'foto23.jpg', 'esteban.cruz@example.com', 'ACTIVO'),
+    ('ACO123457', 'Natalia', 'Guzmán', 'pass123', '1981-07-20', 'foto24.jpg', 'natalia.guzman@example.com', 'ACTIVO'),
+    ('ACO123458', 'Luis', 'Pinto', 'pass123', '1990-02-10', 'foto25.jpg', 'luis.pinto@example.com', 'ACTIVO'),
+    ('ACO123459', 'Sandra', 'Bravo', 'pass123', '1988-09-15', 'foto26.jpg', 'sandra.bravo@example.com', 'ACTIVO'),
+    ('ACO123460', 'Andrés', 'Palacios', 'pass123', '1993-01-05', 'foto27.jpg', 'andres.palacios@example.com', 'ACTIVO'),
+    ('ACO123461', 'Carla', 'Benítez', 'pass123', '1982-06-25', 'foto28.jpg', 'carla.benitez@example.com', 'ACTIVO'),
+    ('ACO123462', 'Alejandro', 'Mora', 'pass123', '1989-12-12', 'foto29.jpg', 'alejandro.mora@example.com', 'ACTIVO'),
+    ('ACO123463', 'Mónica', 'Pérez', 'pass123', '1985-11-20', 'foto30.jpg', 'monica.perez@example.com', 'ACTIVO'),
+    ('ACO123464', 'Sergio', 'Cordero', 'pass123', '1991-08-18', 'foto31.jpg', 'sergio.cordero@example.com', 'ACTIVO'),
+    ('ACO123465', 'Andrea', 'Araya', 'pass123', '1980-04-10', 'foto32.jpg', 'andrea.araya@example.com', 'ACTIVO'),
+    ('ENF002', 'Raquel', 'Moreno', 'pass123', '1983-07-25', 'foto33.jpg', 'raquel.moreno@example.com', 'ACTIVO'),
+    ('ENF003', 'Oscar', 'Pinto', 'pass123', '1992-09-05', 'foto34.jpg', 'oscar.pinto@example.com', 'ACTIVO'),
+    ('ENF004', 'Victoria', 'Véliz', 'pass123', '1986-11-10', 'foto35.jpg', 'victoria.veliz@example.com', 'ACTIVO'),
+    ('ENF005', 'Pablo', 'Marín', 'pass123', '1990-04-12', 'foto36.jpg', 'pablo.marin@example.com', 'ACTIVO'),
+    ('ENF006', 'Jessica', 'Ríos', 'pass123', '1985-01-20', 'foto37.jpg', 'jessica.rios@example.com', 'ACTIVO'),
+    ('ENF007', 'Alejandra', 'Salas', 'pass123', '1982-06-30', 'foto38.jpg', 'alejandra.salas@example.com', 'ACTIVO'),
+    ('ENF008', 'Esteban', 'Bravo', 'pass123', '1991-05-15', 'foto39.jpg', 'esteban.bravo@example.com', 'ACTIVO'),
+    ('ENF009', 'Gabriela', 'Reyes', 'pass123', '1987-07-25', 'foto40.jpg', 'gabriela.reyes@example.com', 'ACTIVO'),
+    ('ENF010', 'Juan', 'Gómez', 'pass123', '1984-08-20', 'foto41.jpg', 'juan.gomez@example.com', 'ACTIVO'),
+    ('PSC005', 'Martín', 'Castañeda', 'pass123', '1988-10-12', 'foto42.jpg', 'martin.castaneda@example.com', 'ACTIVO'),
+    ('PSC006', 'Sandra', 'López', 'pass123', '1992-06-15', 'foto43.jpg', 'sandra.lopez@example.com', 'ACTIVO'),
+    ('PSC007', 'Javier', 'Pérez', 'pass123', '1981-03-05', 'foto44.jpg', 'javier.perez@example.com', 'ACTIVO'),
+    ('PSC008', 'Camila', 'Salazar', 'pass123', '1989-09-20', 'foto45.jpg', 'camila.salazar@example.com', 'ACTIVO'),
+    ('PSC009', 'Nombre9', 'Apellido9', 'pass123', '1990-04-15', 'foto46.jpg', 'nombre9.apellido9@example.com', 'ACTIVO'),
+    ('PSC010', 'Nombre10', 'Apellido10', 'pass123', '1985-07-25', 'foto47.jpg', 'nombre10.apellido10@example.com', 'ACTIVO'),
+    ('PSC011', 'Nombre11', 'Apellido11', 'pass123', '1992-11-30', 'foto48.jpg', 'nombre11.apellido11@example.com', 'ACTIVO'),
+    ('PSC012', 'Nombre12', 'Apellido12', 'pass123', '1988-02-20', 'foto49.jpg', 'nombre12.apellido12@example.com', 'ACTIVO');
 
 INSERT INTO profesional (legajo, matricula)
 VALUES 
@@ -68,30 +111,116 @@ VALUES
     ('PSC003', 'MAT001234570'),
     ('ENF001', 'MAT000123456'),
     ('PSC002', 'MAT000654321'),
-    ('PSC004', 'MAT000894546');
+    ('PSC004', 'MAT000894546'),
+    ('ADM003', 'MAT123456792'),
+    ('ADM004', 'MAT123456793'),
+    ('ADM005', 'MAT123456794'),
+    ('ADM006', 'MAT123456795'),
+    ('ADM007', 'MAT123456796'),
+    ('ADM008', 'MAT123456797'),
+    ('ADM009', 'MAT123456798'),
+    ('ADM010', 'MAT123456799'),
+    ('PSQ002', 'MAT001234570'),
+    ('PSQ003', 'MAT001234571'),
+    ('PSQ004', 'MAT001234572'),
+    ('PSQ005', 'MAT001234573'),
+    ('PSQ006', 'MAT001234574'),
+    ('PSQ007', 'MAT001234575'),
+    ('PSQ008', 'MAT001234576'),
+    ('PSQ009', 'MAT001234577'),
+    ('PSQ010', 'MAT001234578'),
+    ('ACO123457', 'MAT123456792'),
+    ('ACO123458', 'MAT123456793'),
+    ('ACO123459', 'MAT123456794'),
+    ('ACO123460', 'MAT123456795'),
+    ('ACO123461', 'MAT123456796'),
+    ('ACO123462', 'MAT123456797'),
+    ('ACO123463', 'MAT123456798'),
+    ('ACO123464', 'MAT123456799'),
+    ('ACO123465', 'MAT123456800'),
+    ('ENF002', 'MAT000123457'),
+    ('ENF003', 'MAT000123458'),
+    ('ENF004', 'MAT000123459'),
+    ('ENF005', 'MAT000123460'),
+    ('ENF006', 'MAT000123461'),
+    ('ENF007', 'MAT000123462'),
+    ('ENF008', 'MAT000123463'),
+    ('ENF009', 'MAT000123464'),
+    ('ENF010', 'MAT000123465'),
+    ('PSC005', 'MAT001234580'),
+    ('PSC006', 'MAT001234581'),
+    ('PSC007', 'MAT001234582'),
+    ('PSC008', 'MAT001234583'),
+    ('PSC009', 'MAT001234584'),
+    ('PSC010', 'MAT001234585'),
+    ('PSC011', 'MAT001234586'),
+    ('PSC012', 'MAT001234587');
 
 INSERT INTO administrativo (legajo)
 VALUES 
     ('ADM001'),
-    ('ADM002');
+    ('ADM002'),
+    ('ADM003'),
+    ('ADM004'),
+    ('ADM005'),
+    ('ADM006'),
+    ('ADM007'),
+    ('ADM008'),
+    ('ADM009'),
+    ('ADM010');
 
 INSERT INTO psiquiatra(legajo)
 VALUES
-    ('PSQ001');
-
+    ('PSQ001'),
+    ('PSQ002'),
+    ('PSQ003'),
+    ('PSQ004'),
+    ('PSQ005'),
+    ('PSQ006'),
+    ('PSQ007'),
+    ('PSQ008'),
+    ('PSQ009'),
+    ('PSQ010');
+    
 INSERT INTO acompanianteTerapeutico (legajo)
 VALUES 
-    ('ACO123456');
+    ('ACO123456'),
+    ('ACO123457'),
+    ('ACO123458'),
+    ('ACO123459'),
+    ('ACO123460'),
+    ('ACO123461'),
+    ('ACO123462'),
+    ('ACO123463'),
+    ('ACO123464'),
+    ('ACO123465');
 
 INSERT INTO enfermera (legajo)
 VALUES 
-    ('ENF001');
+    ('ENF001'),
+    ('ENF002'),
+    ('ENF003'),
+    ('ENF004'),
+    ('ENF005'),
+    ('ENF006'),
+    ('ENF007'),
+    ('ENF008'),
+    ('ENF009'),
+    ('ENF010');
 
 INSERT INTO psicologo (legajo)
 VALUES 
     ('PSC004'),
-    ('PSC002');
-
+    ('PSC002'),
+    ('PSC005'),
+    ('PSC006'),
+    ('PSC007'),
+    ('PSC008'),
+    ('PSC009'),
+    ('PSC010'),
+    ('PSC011'),
+    ('PSC012');
+    
 INSERT INTO cargo(nombreCargo)
 VALUES
     ('Director');
@@ -157,11 +286,11 @@ VALUES
     ('Dig-3','Estado 3'),
     ('Dig-4','Estado 4'),
     ('Dig-5', 'Estado 1'),
-	('Dig-6', 'Estado 2'),
-	('Dig-7', 'Estado 3'),
-	('Dig-8', 'Estado 4'),
-	('Dig-9', 'Estado 5'),
-	('Dig-10', 'Estado 6');
+    ('Dig-6', 'Estado 2'),
+    ('Dig-7', 'Estado 3'),
+    ('Dig-8', 'Estado 4'),
+    ('Dig-9', 'Estado 5'),
+    ('Dig-10', 'Estado 6');
 
 INSERT INTO contiene (idDiagnostico, codigoNomenclador, codigoEje)
 VALUES 
@@ -178,11 +307,11 @@ VALUES
 
 INSERT INTO evolucion (numeroEvolucion,dni, tipoDni, estado, motivoOcultado, fechaHora, descripcion, legajoProfesional, idDiagnostico)
 VALUES 
-	('EV-1','78901234', 'Cédula', 'Estable', 'N/A', '2024-08-29 09:00:00', 'El paciente muestra mejoras en su condición general y sigue el plan de tratamiento.', 'ACO123456', 'Dig-1'),
-	('EV-2','65432109', 'DNI', 'Mejorando', 'N/A', '2024-08-30 10:30:00', 'Paciente presenta mejoría en su estado general y se ajusta la medicación.', 'PSQ001', 'Dig-2'),
-	('EV-3','11223344', 'DNI', 'Estable', 'N/A', '2024-08-30 11:00:00', 'Paciente estable, se continúa tratamiento intensivo.', 'ENF001', 'Dig-3'),
-	('EV-4','22334455', 'DNI', 'Inestable', 'N/A', '2024-08-30 12:00:00', 'Paciente presenta episodios de ansiedad, se ajustará medicación.', 'PSQ001', 'Dig-4'),
-	('EVO001', '1234567890', 'DNI', 'En tratamiento', NULL, '2023-01-10 10:00:00', 'Paciente muestra mejora en los síntomas.', 'PSQ001', 'Dig-5'),
+    ('EV-1','78901234', 'Cédula', 'Estable', 'N/A', '2024-08-29 09:00:00', 'El paciente muestra mejoras en su condición general y sigue el plan de tratamiento.', 'ACO123456', 'Dig-1'),
+    ('EV-2','65432109', 'DNI', 'Mejorando', 'N/A', '2024-08-30 10:30:00', 'Paciente presenta mejoría en su estado general y se ajusta la medicación.', 'PSQ001', 'Dig-2'),
+    ('EV-3','11223344', 'DNI', 'Estable', 'N/A', '2024-08-30 11:00:00', 'Paciente estable, se continúa tratamiento intensivo.', 'ENF001', 'Dig-3'),
+    ('EV-4','22334455', 'DNI', 'Inestable', 'N/A', '2024-08-30 12:00:00', 'Paciente presenta episodios de ansiedad, se ajustará medicación.', 'PSQ001', 'Dig-4'),
+    ('EVO001', '1234567890', 'DNI', 'En tratamiento', NULL, '2023-01-10 10:00:00', 'Paciente muestra mejora en los síntomas.', 'PSQ001', 'Dig-5'),
     ('EVO002', '1234567890', 'DNI', 'Estable', NULL, '2023-02-01 14:30:00', 'Control de rutina, sin novedades.', 'PSC002', 'Dig-6'),
     ('EVO003', '0987654321', 'DNI', 'Pendiente', 'Motivo oculto', '2023-01-15 09:00:00', 'Paciente solicita una segunda opinión.', 'PSC003', 'Dig-7'),
     ('EVO004', '0987654321', 'DNI', 'Mejorado', NULL, '2023-03-10 16:00:00', 'Paciente presenta mejoría significativa.', 'PSC004', 'Dig-8'),
