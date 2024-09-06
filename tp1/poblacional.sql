@@ -28,7 +28,9 @@ VALUES
 ('PSQ001', 'Javier', 'Sánchez', 'password456', '1995-02-20', 'https://example.com/fotoPerfilJavier.jpg', 'javier.sanchez@example.com', 'ACTIVO'),
 ('PSC003', 'Clara', 'Rodríguez', 'password789', '1975-11-25', 'https://example.com/fotoPerfilClara.jpg', 'clara.rodriguez@example.com', 'ACTIVO'),
 ('ENF001', 'Laura', 'González', 'password321', '1987-03-14', 'https://example.com/fotoLaura.jpg', 'laura.gonzalez@example.com', 'ACTIVO'),
-('PSC002', 'Luis', 'Martínez', 'password654', '1992-11-30', 'https://example.com/fotoLuis.jpg', 'luis.martinez@example.com', 'BAJA');
+('PSC002', 'Luis', 'Martínez', 'password654', '1992-11-30', 'https://example.com/fotoLuis.jpg', 'luis.martinez@example.com', 'BAJA'),
+('PSC004', 'María', 'Pérez', 'securepass123', '1990-06-12', 'https://example.com/fotoMaria.jpg', 'maria.perez@example.com', 'ACTIVO'),
+('ADM002', 'Carlos', 'Fernández', 'adminsecure789', '1988-08-05', 'https://example.com/fotoCarlos.jpg', 'carlos.fernandez@example.com', 'ACTIVO');
 
 INSERT INTO profesional (legajo, matricula)
 VALUES 
@@ -36,7 +38,8 @@ VALUES
 ('PSQ001', 'MAT001234569'),
 ('PSC003', 'MAT001234570'),
 ('ENF001', 'MAT000123456'),
-('PSC002', 'MAT000654321');
+('PSC002', 'MAT000654321'),
+('PSC004', 'MAT000894546');
 
 INSERT INTO psiquiatra(legajo)
 VALUES
@@ -52,21 +55,39 @@ VALUES
 
 INSERT INTO psicologo (legajo)
 VALUES 
+('PSC004'),
 ('PSC002');
+
+
+INSERT INTO cargo(nombreCargo)
+VALUES
+('Director');
+
+INSERT INTO asignado(fecha, legajo, nombreCargo)
+VALUES
+('2020-08-15', 'ADM002', 'Director');
+
+INSERT INTO registroBaja(idRegistroBaja, fechaHora, motivo, legajoPersonal, legajoAdmin)
+VALUES
+('Baja-1', '2024-08-29 14:30:00', 'Renuncia voluntaria', 'PSC002', 'ADM002');
+
 
 INSERT INTO sot (fechaHora, motivoLlamado, observacionLlamado, dni, tipoDni, legajoAcompaniante)
 VALUES 
 ('2024-08-29 14:30:00', 'Consulta de tratamiento', 'Paciente se siente mejor pero necesita ajustar la medicación.', '87654321', 'Pasaporte', 'ACO123456');
 
 
--- relacion de un paciente con un turno
-
 INSERT INTO administrativo (legajo)
-VALUES ('ADM001');
+VALUES 
+('ADM001'),
+('ADM002');
+
+-- relacion de un paciente con un turno
 
 INSERT INTO turno (estado, fechaHora, dni, tipoDni, legajoProfesional, legajoAdmin)
 VALUES 
-    ('LIBRE', '2024-08-30 10:00:00', '65432109', 'DNI', 'ACO123456', 'ADM001');
+    ('LIBRE', '2024-08-30 10:00:00', '65432109', 'DNI', 'ACO123456', 'ADM001'),
+    ('ATENDIDO', '2024-09-01 09:00:00', '12345678', 'DNI', 'PSQ001', 'ADM001');
 
 -- relación de un paciente con una evolucion
 
