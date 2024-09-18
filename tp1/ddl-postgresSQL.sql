@@ -97,7 +97,7 @@ CREATE TABLE paciente (
 	tipoDni VARCHAR(15),
 	nombre VARCHAR(50) NOT NULL,
 	apellido VARCHAR(50) NOT NULL,
-	obraSocial VARCHAR(30) NOT NULL,
+	obraSocial VARCHAR(30),
 	PRIMARY KEY (dni,tipoDni),
 	fechaNac DATE NOT NULL,
 	fechaIngreso DATE NOT NULL,
