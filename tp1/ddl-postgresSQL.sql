@@ -207,7 +207,7 @@ CREATE TABLE stock (
 	cantidad INT NOT NULL,
 	idMedicamento INT,
 	PRIMARY KEY (fecha, idMedicamento),
-	FOREIGN KEY (idMedicamento) REFERENCES medicamento (idMedicamento) ON UPDATE CASCADE ON DELETE CASCADE
+	FOREIGN KEY (idMedicamento) REFERENCES medicamento (idMedicamento) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 -- idEntrega es serial ya que no es referenciada en otras relaciones como clave foranea.
