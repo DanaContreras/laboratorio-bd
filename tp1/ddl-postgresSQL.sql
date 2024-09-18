@@ -233,7 +233,7 @@ CREATE TABLE dona (
 	dni VARCHAR(10) NOT NULL,
 	tipoDni VARCHAR(15) NOT NULL,
 	PRIMARY KEY (fechaDonado, idMedicamento),
-	FOREIGN KEY (idMedicamento) REFERENCES medicamento (idMedicamento) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (idMedicamento) REFERENCES medicamento (idMedicamento) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
