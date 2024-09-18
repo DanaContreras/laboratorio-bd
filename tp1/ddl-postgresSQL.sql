@@ -70,7 +70,7 @@ CREATE TABLE psicologo (
 );
 
 CREATE TABLE registroBaja (
-	idRegistroBaja VARCHAR(15) PRIMARY KEY,
+	idRegistroBaja INT PRIMARY KEY,
 	fechaHora fechaHora NOT NULL,
 	motivo VARCHAR(100) NOT NULL,
 	legajoPersonal VARCHAR(15) NOT NULL,
@@ -105,7 +105,7 @@ CREATE TABLE paciente (
 );
 
 CREATE TABLE tratamientoGravedad (
-	idTratamiento VARCHAR(20) PRIMARY KEY,
+	idTratamiento INT PRIMARY KEY,
 	gravedad VARCHAR(30) NOT NULL CHECK (gravedad IN ('Grave intensivo', 'Grave medianamente intensivo', 'Ambulatorio')), -- VER
 	frecuencia frecuenciaTratamiento NOT NULL
 );
@@ -115,41 +115,41 @@ CREATE TABLE recibe (
 	fechaFin DATE,
 	dni VARCHAR(10),
 	tipoDni VARCHAR(20),
-	idTratamiento VARCHAR(20) NOT NULL,
+	idTratamiento INT NOT NULL,
 	PRIMARY KEY(fechaInicio, dni,tipoDni),
 	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (idTratamiento) REFERENCES tratamientoGravedad (idTratamiento) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE diagnosticoMultiaxial (
-	idDiagnostico VARCHAR(15) PRIMARY KEY,
+	idDiagnostico INT PRIMARY KEY,
 	estado VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE eje (
-	codigoEje VARCHAR(15) PRIMARY KEY,
+	codigoEje INT PRIMARY KEY,
 	descripcionEje VARCHAR(500) NOT NULL
 );
 
 CREATE TABLE nomenclador (
-	codigoNomenclador VARCHAR(20),
+	codigoNomenclador INT,
 	descripcion VARCHAR(500),
-	codigoEje VARCHAR(20),
+	codigoEje INT,
 	PRIMARY KEY(codigoNomenclador, codigoEje),
 	FOREIGN KEY (codigoEje) REFERENCES eje (codigoEje) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE contiene (
-	idDiagnostico VARCHAR(15),
-	codigoNomenclador VARCHAR(20),
-	codigoEje VARCHAR(20),
+	idDiagnostico INT(15),
+	codigoNomenclador INT,
+	codigoEje INT,
 	PRIMARY KEY(idDiagnostico, codigoNomenclador, codigoEje),
 	FOREIGN KEY (idDiagnostico) REFERENCES diagnosticoMultiaxial (idDiagnostico) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (codigoNomenclador, codigoEje) REFERENCES nomenclador (codigoNomenclador, codigoEje) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE evolucion (
-	numeroEvolucion VARCHAR(15),
+	numeroEvolucion INT,
 	dni VARCHAR(10),
 	tipoDni VARCHAR(15),
 	estado VARCHAR(50) NOT NULL,
@@ -157,7 +157,7 @@ CREATE TABLE evolucion (
 	fechaHora fechaHora NOT NULL,
 	descripcion VARCHAR(200) NOT NULL,
 	legajoProfesional VARCHAR(15) NOT NULL,
-	idDiagnostico VARCHAR(15) NOT NULL,
+	idDiagnostico INT NOT NULL,
 	PRIMARY KEY (numeroEvolucion, dni,tipoDni),
 	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (legajoProfesional) REFERENCES profesional (legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
@@ -183,12 +183,12 @@ CREATE TABLE solicita (
 );
 
 CREATE TABLE recetaMedica (
-	idReceta VARCHAR(15) PRIMARY KEY,
+	idReceta INT PRIMARY KEY,
 	fecha DATE NOT NULL,
 	descripcion VARCHAR(500),
 	estado estadoReceta,
 	legajoPsiquiatra VARCHAR(15) NOT NULL,
-	numeroEvolucion VARCHAR(15) NOT NULL,
+	numeroEvolucion INT NOT NULL,
 	dni VARCHAR(10) NOT NULL,
 	tipoDni VARCHAR(15) NOT NULL,
 	FOREIGN KEY (legajoPsiquiatra) REFERENCES psiquiatra (legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
@@ -196,7 +196,7 @@ CREATE TABLE recetaMedica (
 );
 
 CREATE TABLE medicamento (
-	idMedicamento VARCHAR(15) PRIMARY KEY,
+	idMedicamento INT PRIMARY KEY,
 	nombre VARCHAR(50) NOT NULL,
 	dosis INT NOT NULL,
 	tipo VARCHAR(50) NOT NULL
@@ -205,31 +205,31 @@ CREATE TABLE medicamento (
 CREATE TABLE stock (
 	fecha DATE,
 	cantidad INT NOT NULL,
-	idMedicamento VARCHAR(15),
+	idMedicamento INT,
 	PRIMARY KEY (fecha, idMedicamento),
 	FOREIGN KEY (idMedicamento) REFERENCES medicamento (idMedicamento) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+-- idEntrega es serial ya que no es referenciada en otras relaciones como clave foranea.
 CREATE TABLE entregaMedicamento(
 	idEntrega SERIAL PRIMARY KEY,
 	fechaHora fechaHora NOT NULL,
 	dosis VARCHAR(15) NOT NULL,
 	legajoEnfermera VARCHAR(15) NOT NULL,
-	idReceta VARCHAR(15) NOT NULL,
-	idMedicamento VARCHAR(15) NOT NULL,
+	idReceta INT NOT NULL,
+	idMedicamento INT NOT NULL,
 	dni VARCHAR(15) NOT NULL,
 	tipoDni VARCHAR(15) NOT NULL,
 	FOREIGN KEY (legajoEnfermera) REFERENCES enfermera(legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (idReceta) REFERENCES recetaMedica (idReceta) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (idMedicamento) REFERENCES medicamento(idMedicamento) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (dni,tipoDni) REFERENCES paciente(dni,tipoDni) ON UPDATE CASCADE ON DELETE RESTRICT
-
 );
 
 CREATE TABLE dona (
 	fechaDonado DATE,
 	cantEspecifica INT NOT NULL,
-	idMedicamento VARCHAR(15),
+	idMedicamento INT,
 	dni VARCHAR(10) NOT NULL,
 	tipoDni VARCHAR(15) NOT NULL,
 	PRIMARY KEY (fechaDonado, idMedicamento),
@@ -240,8 +240,8 @@ CREATE TABLE dona (
 CREATE TABLE requiereDe(
 	dosis INT NOT NULL,
 	frecuencia VARCHAR(15) NOT NULL,
-	idReceta VARCHAR(15),
-	idMedicamento VARCHAR(15),
+	idReceta INT,
+	idMedicamento INT,
 	PRIMARY KEY (idReceta,idMedicamento),
 	FOREIGN KEY (idReceta) REFERENCES recetaMedica(idReceta) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (idMedicamento) REFERENCES medicamento(idMedicamento) ON UPDATE CASCADE ON DELETE RESTRICT
