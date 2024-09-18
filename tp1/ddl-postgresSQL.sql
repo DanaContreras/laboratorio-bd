@@ -75,8 +75,8 @@ CREATE TABLE registroBaja (
 	motivo VARCHAR(100) NOT NULL,
 	legajoPersonal VARCHAR(15) NOT NULL,
 	legajoAdmin VARCHAR(15) NOT NULL,
-	FOREIGN KEY (legajoPersonal) REFERENCES personalClinico (legajo) ON UPDATE RESTRICT ON DELETE RESTRICT,
-	FOREIGN KEY (legajoAdmin) REFERENCES administrativo (legajo) ON UPDATE RESTRICT ON DELETE RESTRICT
+	FOREIGN KEY (legajoPersonal) REFERENCES personalClinico (legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
+	FOREIGN KEY (legajoAdmin) REFERENCES administrativo (legajo) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE cargo (
@@ -88,7 +88,7 @@ CREATE TABLE asignado (
 	legajo VARCHAR(15),
 	nombreCargo VARCHAR(50),
 	PRIMARY KEY (fecha, legajo),
-	FOREIGN KEY (legajo) REFERENCES administrativo (legajo) ON UPDATE RESTRICT ON DELETE RESTRICT,
+	FOREIGN KEY (legajo) REFERENCES administrativo (legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (nombreCargo) REFERENCES cargo (nombreCargo) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
@@ -145,7 +145,7 @@ CREATE TABLE contiene (
 	codigoEje VARCHAR(20),
 	PRIMARY KEY(idDiagnostico, codigoNomenclador, codigoEje),
 	FOREIGN KEY (idDiagnostico) REFERENCES diagnosticoMultiaxial (idDiagnostico) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (codigoNomenclador, codigoEje) REFERENCES nomenclador (codigoNomenclador, codigoEje) ON UPDATE RESTRICT ON DELETE RESTRICT
+	FOREIGN KEY (codigoNomenclador, codigoEje) REFERENCES nomenclador (codigoNomenclador, codigoEje) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE evolucion (
@@ -159,8 +159,8 @@ CREATE TABLE evolucion (
 	legajoProfesional VARCHAR(15) NOT NULL,
 	idDiagnostico VARCHAR(15) NOT NULL,
 	PRIMARY KEY (numeroEvolucion, dni,tipoDni),
-	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE RESTRICT ON DELETE RESTRICT,
-	FOREIGN KEY (legajoProfesional) REFERENCES profesional (legajo) ON UPDATE RESTRICT ON DELETE RESTRICT,
+	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE RESTRICT,
+	FOREIGN KEY (legajoProfesional) REFERENCES profesional (legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (idDiagnostico) REFERENCES diagnosticoMultiaxial (idDiagnostico) ON UPDATE CASCADE ON DELETE RESTRICT 
 );
 
