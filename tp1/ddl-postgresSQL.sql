@@ -165,16 +165,21 @@ CREATE TABLE evolucion (
 );
 
 CREATE TABLE turno (
-	idTurno SERIAL PRIMARY KEY,
+	idTurno INT PRIMARY KEY,
 	estado VARCHAR(30) NOT NULL CHECK (estado IN ('LIBRE', 'RESERVADO', 'CANCELADO', 'ATENDIDO')),
 	fechaHora fechaHora NOT NULL,
-	dni VARCHAR(10),
-	tipoDni VARCHAR(15),
 	legajoProfesional VARCHAR(15) NOT NULL,
 	legajoAdmin VARCHAR(15),
-	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE SET NULL,
 	FOREIGN KEY (legajoProfesional) REFERENCES profesional (legajo) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (legajoAdmin) REFERENCES administrativo (legajo) ON UPDATE CASCADE ON DELETE SET NULL
+);
+
+CREATE TABLE solicita (
+	idTurno INT PRIMARY KEY,
+	dni VARCHAR(10),
+	tipoDni VARCHAR(15),
+	FOREIGN KEY (idTurno) REFERENCES turno (idTurno) ON UPDATE CASCADE ON DELETE RESTRICT,
+	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE RESTRICT,
 );
 
 CREATE TABLE recetaMedica (
