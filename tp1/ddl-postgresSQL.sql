@@ -140,7 +140,7 @@ CREATE TABLE nomenclador (
 );
 
 CREATE TABLE contiene (
-	idDiagnostico INT(15),
+	idDiagnostico INT,
 	codigoNomenclador INT,
 	codigoEje INT,
 	PRIMARY KEY(idDiagnostico, codigoNomenclador, codigoEje),
@@ -179,7 +179,7 @@ CREATE TABLE solicita (
 	dni VARCHAR(10),
 	tipoDni VARCHAR(15),
 	FOREIGN KEY (idTurno) REFERENCES turno (idTurno) ON UPDATE CASCADE ON DELETE RESTRICT,
-	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE RESTRICT,
+	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE recetaMedica (
