@@ -26,29 +26,29 @@ VALUES
 
 INSERT INTO tratamientoGravedad (idTratamiento, gravedad, frecuencia)
 VALUES 
-    ('TRT001', 'Grave intensivo', 'DIA COMPLETO'),
-    ('TRT002', 'Ambulatorio', 'SEMANAL'),
-    ('T001', 'Grave intensivo', 'DIA COMPLETO'),
-    ('T002', 'Grave medianamente intensivo', 'SEMANAL'),
-    ('T003', 'Ambulatorio', 'MENSUAL'),
-    ('T004', 'Grave intensivo', 'DIA COMPLETO'),
-    ('T005', 'Grave intensivo', 'SEMANAL'),
-    ('T006', 'Ambulatorio', 'DIA COMPLETO'),
-    ('T007', 'Grave medianamente intensivo', 'QUINCENAL'),
-    ('T008', 'Ambulatorio', 'MENSUAL');
+    (1, 'Grave intensivo', 'DIA COMPLETO'),
+    (2, 'Ambulatorio', 'SEMANAL'),
+    (3, 'Grave intensivo', 'DIA COMPLETO'),
+    (4, 'Grave medianamente intensivo', 'SEMANAL'),
+    (5, 'Ambulatorio', 'MENSUAL'),
+    (6, 'Grave intensivo', 'DIA COMPLETO'),
+    (7, 'Grave intensivo', 'SEMANAL'),
+    (8, 'Ambulatorio', 'DIA COMPLETO'),
+    (9, 'Grave medianamente intensivo', 'QUINCENAL'),
+    (10, 'Ambulatorio', 'MENSUAL');
 
 INSERT INTO recibe (fechaInicio, fechaFin, dni, tipoDni, idTratamiento)
 VALUES  --
-    ('2024-01-10', '2024-03-10', '12345678', 'DNI', 'TRT001'),
-    ('2023-01-15', '2023-02-15', '1234567890', 'DNI', 'T001'),
-    ('2023-03-01', '2023-04-01', '1234567890', 'DNI', 'T003'),
-    ('2023-01-20', '2023-02-20', '0987654321', 'DNI', 'T002'),
-    ('2023-04-01', '2023-05-01', '0987654321', 'DNI', 'T004'),
-    ('2023-03-15', '2023-04-15', '0987654321', 'DNI', 'T005'),
-    ('2023-02-10', '2023-03-10', '1122334455', 'PASAPORTE', 'T006'),
-    ('2023-04-05', '2023-05-05', '1122334455', 'PASAPORTE', 'T007'),
-    ('2023-05-01', '2023-06-01', '1122334455', 'PASAPORTE', 'T008'),
-    ('2023-06-10', '2023-07-10', '1234567890', 'DNI', 'T008');
+    ('2024-01-10', '2024-03-10', '12345678', 'DNI', 1),
+    ('2023-01-15', '2023-02-15', '1234567890', 'DNI', 3),
+    ('2023-03-01', '2023-04-01', '1234567890', 'DNI', 5),
+    ('2023-01-20', '2023-02-20', '0987654321', 'DNI', 4),
+    ('2023-04-01', '2023-05-01', '0987654321', 'DNI', 6),
+    ('2023-03-15', '2023-04-15', '0987654321', 'DNI', 7),
+    ('2023-02-10', '2023-03-10', '1122334455', 'PASAPORTE', 8),
+    ('2023-04-05', '2023-05-05', '1122334455', 'PASAPORTE', 9),
+    ('2023-05-01', '2023-06-01', '1122334455', 'PASAPORTE', 10),
+    ('2023-06-10', '2023-07-10', '1234567890', 'DNI', 10);
 
 INSERT INTO personalClinico (legajo, nombre, apellido, contrasenia, fechaNac, fotoPerfil, email, estado)
 VALUES 
@@ -231,7 +231,7 @@ VALUES
 
 INSERT INTO registroBaja(idRegistroBaja, fechaHora, motivo, legajoPersonal, legajoAdmin)
 VALUES
-    ('Baja-1', '2024-08-29 14:30:00', 'Renuncia voluntaria', 'PSC002', 'ADM002');
+    (1, '2024-08-29 14:30:00', 'Renuncia voluntaria', 'PSC002', 'ADM002');
 
 INSERT INTO sot (fechaHora, motivoLlamado, observacionLlamado, dni, tipoDni, legajoAcompaniante)
 VALUES 
@@ -246,101 +246,113 @@ VALUES
     ('2023-04-20 12:40:00', 'Evaluación psicológica', 'Paciente requiere evaluación psicológica debido a ansiedad.', '0987654321', 'DNI', 'ACO123456'),
     ('2023-05-10 08:55:00', 'Control de rutina', 'Paciente asiste para control de rutina, sin novedades.', '1122334455', 'PASAPORTE', 'ACO123456');
 
-INSERT INTO turno (estado, fechaHora, dni, tipoDni, legajoProfesional, legajoAdmin)
+INSERT INTO turno (idTurno,estado, fechaHora, legajoProfesional, legajoAdmin)
 VALUES 
-    ('LIBRE', '2024-08-30 10:00:00', '65432109', 'DNI', 'ACO123456', 'ADM001'),
-    ('ATENDIDO', '2024-09-01 09:00:00', '12345678', 'DNI', 'PSQ001', 'ADM001'),
-    ('RESERVADO', '2023-01-10 10:00:00', '1234567890', 'DNI', 'ACO123456', 'ADM001'),
-	('ATENDIDO', '2023-01-15 14:30:00', '0987654321', 'DNI', 'PSQ001', 'ADM002'),
-	('CANCELADO', '2023-02-05 09:00:00', '1122334455', 'PASAPORTE', 'PSC003', 'ADM001'),
-	('LIBRE', '2023-02-20 11:00:00', NULL, NULL, 'ENF001', 'ADM002'),
-	('RESERVADO', '2023-03-01 08:00:00', '1234567890', 'DNI', 'PSC002', 'ADM001'),
-	('ATENDIDO', '2023-03-10 16:30:00', '0987654321', 'DNI', 'PSC004', 'ADM002'),
-	('LIBRE', '2023-04-05 10:15:00', NULL, NULL, 'ACO123456', 'ADM001'),
-	('CANCELADO', '2023-04-15 12:45:00', '1122334455', 'PASAPORTE', 'PSQ001', 'ADM002');
+    (1,'LIBRE', '2024-08-30 10:00:00', 'ACO123456', 'ADM001'),
+    (2,'ATENDIDO', '2024-09-01 09:00:00', 'PSQ001', 'ADM001'),
+    (3,'RESERVADO', '2023-01-10 10:00:00', 'ACO123456', 'ADM001'),
+	(4,'ATENDIDO', '2023-01-15 14:30:00', 'PSQ001', 'ADM002'),
+	(5,'CANCELADO', '2023-02-05 09:00:00', 'PSC003', 'ADM001'),
+	(6,'LIBRE', '2023-02-20 11:00:00', 'ENF001', 'ADM002'),
+	(7,'RESERVADO', '2023-03-01 08:00:00', 'PSC002', 'ADM001'),
+	(8,'ATENDIDO', '2023-03-10 16:30:00', 'PSC004', 'ADM002'),
+	(9,'LIBRE', '2023-04-05 10:15:00', 'ACO123456', 'ADM001'),
+	(10,'CANCELADO', '2023-04-15 12:45:00','PSQ001', 'ADM002');
+
+INSERT INTO solicita(idTurno,dni,tipoDni)
+VALUES
+    (1, '65432109', 'DNI'),
+    (2, '12345678', 'DNI'),
+    (3, '1234567890','DNI'),
+    (4, '0987654321', 'DNI'),
+    (5, '1122334455', 'PASAPORTE'),
+    (7, '1234567890', 'DNI'),
+    (8,  '0987654321', 'DNI'),
+    (10, '1122334455', 'PASAPORTE');
+    
 
 INSERT INTO eje (codigoEje, descripcionEje)
 VALUES 
-    ('EJE1', 'Descripción del Eje 1'),
-    ('EJE2', 'Descripcion del Eje 2'),
-    ('EJE3', 'Descripcion del Eje 3'),
-    ('EJE4', 'Descripcion del Eje 4'),
-    ('EJE5', 'Descripcion del Eje 5');
+    (1, 'Descripción del Eje 1'),
+    (2, 'Descripcion del Eje 2'),
+    (3, 'Descripcion del Eje 3'),
+    (4, 'Descripcion del Eje 4'),
+    (5, 'Descripcion del Eje 5');
 
 INSERT INTO nomenclador (codigoNomenclador, descripcion, codigoEje)
 VALUES 
-    ('NOM3', 'Descripción Nomenclador 3', 'EJE1'),
-    ('NOM4', 'Descripción Nomenclador 4', 'EJE2'),
-    ('NOM1', 'Descripción Nomenclador 1', 'EJE1'),
-    ('NOM2', 'Descripción Nomenclador 2', 'EJE1'),
-    ('NOM3', 'Descripción Nomenclador 3', 'EJE2'),
-    ('NOM4', 'Descripción Nomenclador 4', 'EJE1'),
-    ('NOM5', 'Descripción Nomenclador 5', 'EJE3'),
-    ('NOM6', 'Descripción Nomenclador 6', 'EJE4'),
-    ('NOM7', 'Descripción Nomenclador 7', 'EJE5');
+    (3, 'Descripción Nomenclador 3', 1),
+    (4, 'Descripción Nomenclador 4', 2),
+    (1, 'Descripción Nomenclador 1', 1),
+    (2, 'Descripción Nomenclador 2', 1),
+    (3, 'Descripción Nomenclador 3', 2),
+    (4, 'Descripción Nomenclador 4', 1),
+    (5, 'Descripción Nomenclador 5', 3),
+    (6, 'Descripción Nomenclador 6', 4),
+    (7, 'Descripción Nomenclador 7', 5);
 
 INSERT INTO diagnosticoMultiaxial (idDiagnostico,estado)
 VALUES 
-    ('Dig-1','Estado 1'),
-    ('Dig-2','Estado 2'),
-    ('Dig-3','Estado 3'),
-    ('Dig-4','Estado 4'),
-    ('Dig-5', 'Estado 1'),
-    ('Dig-6', 'Estado 2'),
-    ('Dig-7', 'Estado 3'),
-    ('Dig-8', 'Estado 4'),
-    ('Dig-9', 'Estado 5'),
-    ('Dig-10', 'Estado 6');
+    (1,'Estado 1'),
+    (2,'Estado 2'),
+    (3,'Estado 3'),
+    (4,'Estado 4'),
+    (5, 'Estado 1'),
+    (6, 'Estado 2'),
+    (7, 'Estado 3'),
+    (8, 'Estado 4'),
+    (9, 'Estado 5'),
+    (10, 'Estado 6');
 
 INSERT INTO contiene (idDiagnostico, codigoNomenclador, codigoEje)
 VALUES 
-    ('Dig-1', 'NOM3', 'EJE1'),
-    ('Dig-2', 'NOM4', 'EJE2'),
-    ('Dig-3', 'NOM3', 'EJE1'),
-    ('Dig-4', 'NOM4', 'EJE1'),
-    ('Dig-5', 'NOM1', 'EJE1'),
-    ('Dig-5', 'NOM2', 'EJE1'),
-    ('Dig-6', 'NOM5', 'EJE3'),
-    ('Dig-6', 'NOM6', 'EJE4'),
-    ('Dig-7', 'NOM7', 'EJE5'),
-    ('Dig-8', 'NOM2', 'EJE1');
+    (1, 3, 1),
+    (2, 4, 2),
+    (3, 3, 1),
+    (4, 4, 1),
+    (5, 1, 1),
+    (5, 2, 1),
+    (6, 5, 3),
+    (6, 6, 4),
+    (7, 7, 5),
+    (8, 2, 1);
 
 INSERT INTO evolucion (numeroEvolucion,dni, tipoDni, estado, motivoOcultado, fechaHora, descripcion, legajoProfesional, idDiagnostico)
 VALUES 
-    ('EV-1','78901234', 'Cédula', 'Estable', 'N/A', '2024-08-29 09:00:00', 'El paciente muestra mejoras en su condición general y sigue el plan de tratamiento.', 'ACO123456', 'Dig-1'),
-    ('EV-2','65432109', 'DNI', 'Mejorando', 'N/A', '2024-08-30 10:30:00', 'Paciente presenta mejoría en su estado general y se ajusta la medicación.', 'PSQ001', 'Dig-2'),
-    ('EV-3','11223344', 'DNI', 'Estable', 'N/A', '2024-08-30 11:00:00', 'Paciente estable, se continúa tratamiento intensivo.', 'ENF001', 'Dig-3'),
-    ('EV-4','22334455', 'DNI', 'Inestable', 'N/A', '2024-08-30 12:00:00', 'Paciente presenta episodios de ansiedad, se ajustará medicación.', 'PSQ001', 'Dig-4'),
-    ('EVO001', '1234567890', 'DNI', 'En tratamiento', NULL, '2023-01-10 10:00:00', 'Paciente muestra mejora en los síntomas.', 'PSQ001', 'Dig-5'),
-    ('EVO002', '1234567890', 'DNI', 'Estable', NULL, '2023-02-01 14:30:00', 'Control de rutina, sin novedades.', 'PSC002', 'Dig-6'),
-    ('EVO003', '0987654321', 'DNI', 'Pendiente', 'Motivo oculto', '2023-01-15 09:00:00', 'Paciente solicita una segunda opinión.', 'PSC003', 'Dig-7'),
-    ('EVO004', '0987654321', 'DNI', 'Mejorado', NULL, '2023-03-10 16:00:00', 'Paciente presenta mejoría significativa.', 'PSC004', 'Dig-8'),
-    ('EVO005', '1122334455', 'PASAPORTE', 'En seguimiento', NULL, '2023-02-20 11:15:00', 'Seguimiento del tratamiento con evolución positiva.', 'ENF001', 'Dig-9'),
-    ('EVO006', '1122334455', 'PASAPORTE', 'Estable', NULL, '2023-04-05 10:30:00', 'Control rutinario con buenos resultados.', 'PSQ001', 'Dig-10');
+    (1,'78901234', 'Cédula', 'Estable', 'N/A', '2024-08-29 09:00:00', 'El paciente muestra mejoras en su condición general y sigue el plan de tratamiento.', 'ACO123456', 1),
+    (2,'65432109', 'DNI', 'Mejorando', 'N/A', '2024-08-30 10:30:00', 'Paciente presenta mejoría en su estado general y se ajusta la medicación.', 'PSQ001', 2),
+    (3,'11223344', 'DNI', 'Estable', 'N/A', '2024-08-30 11:00:00', 'Paciente estable, se continúa tratamiento intensivo.', 'ENF001', 3),
+    (4,'22334455', 'DNI', 'Inestable', 'N/A', '2024-08-30 12:00:00', 'Paciente presenta episodios de ansiedad, se ajustará medicación.', 'PSQ001', 4),
+    (5, '1234567890', 'DNI', 'En tratamiento', NULL, '2023-01-10 10:00:00', 'Paciente muestra mejora en los síntomas.', 'PSQ001', 5),
+    (6, '1234567890', 'DNI', 'Estable', NULL, '2023-02-01 14:30:00', 'Control de rutina, sin novedades.', 'PSC002', 6),
+    (7, '0987654321', 'DNI', 'Pendiente', 'Motivo oculto', '2023-01-15 09:00:00', 'Paciente solicita una segunda opinión.', 'PSC003', 7),
+    (8, '0987654321', 'DNI', 'Mejorado', NULL, '2023-03-10 16:00:00', 'Paciente presenta mejoría significativa.', 'PSC004', 8),
+    (9, '1122334455', 'PASAPORTE', 'En seguimiento', NULL, '2023-02-20 11:15:00', 'Seguimiento del tratamiento con evolución positiva.', 'ENF001', 9),
+    (10, '1122334455', 'PASAPORTE', 'Estable', NULL, '2023-04-05 10:30:00', 'Control rutinario con buenos resultados.', 'PSQ001', 10);
 
 INSERT INTO recetaMedica(idReceta, fecha,descripcion,estado,legajoPsiquiatra, numeroEvolucion,dni,tipoDni)
 VALUES
-    ('20315463', '2024-08-30', 'Tiene que tomar 50mg de Sertralina por dia', 'AUTORIZADO', 'PSQ001', 'EV-2', '65432109', 'DNI'),
-    ('20315464', '2024-08-30', 'Se ajusta la dosis de Sertralina a 100mg por día.', 'ASIGNADO', 'PSQ001', 'EV-3', '11223344', 'DNI'),
-    ('20315465', '2024-08-30', 'Paciente requiere 20mg de Diazepam antes de dormir.', 'NO AUTORIZADO', 'PSQ001', 'EV-4', '22334455', 'DNI');
+    ('20315463', '2024-08-30', 'Tiene que tomar 50mg de Sertralina por dia', 'AUTORIZADO', 'PSQ001', 2, '65432109', 'DNI'),
+    ('20315464', '2024-08-30', 'Se ajusta la dosis de Sertralina a 100mg por día.', 'ASIGNADO', 'PSQ001', 3, '11223344', 'DNI'),
+    ('20315465', '2024-08-30', 'Paciente requiere 20mg de Diazepam antes de dormir.', 'NO AUTORIZADO', 'PSQ001', 4, '22334455', 'DNI');
 
 INSERT INTO medicamento(idMedicamento,nombre,dosis,tipo)
 VALUES
-    ('132153','Sertralina', 50, 'Comprimido'),
-    ('132154', 'Diazepam', 20, 'Comprimido'),
-    ('132155', 'Sertralina', 100, 'Comprimido');
+    (132153,'Sertralina', 50, 'Comprimido'),
+    (132154, 'Diazepam', 20, 'Comprimido'),
+    (132155, 'Sertralina', 100, 'Comprimido');
 
 INSERT INTO stock(fecha,cantidad,idMedicamento)
 VALUES
-    ('2024-02-12',5,'132153'),
-    ('2024-03-15', 10, '132154'),
-    ('2024-03-15', 8, '132155');
+    ('2024-02-12',5,132153),
+    ('2024-03-15', 10, 132154),
+    ('2024-03-15', 8, 132155);
 
 INSERT INTO requiereDe(dosis,frecuencia,idReceta,idMedicamento)
 VALUES
-    (50,'24hs','20315463', '132153'),
-    (100, '24hs', '20315464', '132155'),
-    (20, '24hs', '20315465', '132154');
+    (50,'24hs','20315463', 132153),
+    (100, '24hs', '20315464', 132155),
+    (20, '24hs', '20315465', 132154);
 
 INSERT INTO entregaMedicamento(idEntrega, fechaHora, dosis, legajoEnfermera, idReceta, idMedicamento, dni, tipoDni)
 VALUES
