@@ -22,7 +22,8 @@ VALUES
     ('22334455', 'DNI', 'Ana', 'Suárez', 'Galeno', '1991-05-23', '2024-02-10', 'https://example.com/fotoAna.jpg'),
     ('1234567890', 'DNI', 'Juan', 'Pérez', 'OSDE', '1990-05-15', '2023-01-10', 'https://example.com/foto1.jpg'),
     ('0987654321', 'DNI', 'María', 'González', 'Swiss Medical', '1985-08-23', '2023-02-12', 'https://example.com/foto2.jpg'),
-    ('1122334455', 'PASAPORTE', 'Carlos', 'Ramírez', 'Medifé', '1978-12-02', '2023-03-20', 'https://example.com/foto3.jpg');
+    ('1122334455', 'PASAPORTE', 'Carlos', 'Ramírez', 'Medifé', '1978-12-02', '2023-03-20', 'https://example.com/foto3.jpg'),
+    ('0987654111', 'DNI', 'María', 'González', 'Swiss Medical', '1985-08-23', '2023-02-12', 'https://example.com/foto2.jpg');
 
 INSERT INTO tratamientoGravedad (idTratamiento, gravedad, frecuencia)
 VALUES 
@@ -268,7 +269,7 @@ VALUES
     (5, '1122334455', 'PASAPORTE'),
     (7, '1234567890', 'DNI'),
     (8,  '0987654321', 'DNI'),
-    (10, '1122334455', 'PASAPORTE');
+    (10, '0987654111', 'DNI');
     
 
 INSERT INTO eje (codigoEje, descripcionEje)
