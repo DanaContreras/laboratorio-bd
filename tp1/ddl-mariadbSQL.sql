@@ -49,8 +49,8 @@ CREATE TABLE registroBaja (
 	motivo VARCHAR(100) NOT NULL,
 	legajoPersonal VARCHAR(15) NOT NULL,
 	legajoAdmin VARCHAR(15) NOT NULL,
-	FOREIGN KEY (legajoPersonal) REFERENCES personalClinico (legajo) ON UPDATE RESTRICT ON DELETE RESTRICT,
-	FOREIGN KEY (legajoAdmin) REFERENCES administrativo (legajo) ON UPDATE RESTRICT ON DELETE RESTRICT
+	IGN KEY (legajoPersonal) REFERENCES personalClinico (legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
+	FOREIGN KEY (legajoAdmin) REFERENCES administrativo (legajo) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE cargo (
@@ -62,7 +62,7 @@ CREATE TABLE asignado (
 	legajo VARCHAR(15),
 	nombreCargo VARCHAR(50),
 	PRIMARY KEY (fecha, legajo),
-	FOREIGN KEY (legajo) REFERENCES administrativo (legajo) ON UPDATE RESTRICT ON DELETE RESTRICT,
+	FOREIGN KEY (legajo) REFERENCES administrativo (legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (nombreCargo) REFERENCES cargo (nombreCargo) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
@@ -71,7 +71,7 @@ CREATE TABLE paciente (
 	tipoDni VARCHAR(15),
 	nombre VARCHAR(50) NOT NULL,
 	apellido VARCHAR(50) NOT NULL,
-	obraSocial VARCHAR(30) NOT NULL,
+	obraSocial VARCHAR(30),
 	PRIMARY KEY (dni,tipoDni),
 	fechaNac DATE NOT NULL,
 	fechaIngreso DATE NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE contiene (
 	codigoEje INT,
 	PRIMARY KEY(idDiagnostico, codigoNomenclador, codigoEje),
 	FOREIGN KEY (idDiagnostico) REFERENCES diagnosticoMultiaxial (idDiagnostico) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (codigoNomenclador, codigoEje) REFERENCES nomenclador (codigoNomenclador, codigoEje) ON UPDATE RESTRICT ON DELETE RESTRICT
+	FOREIGN KEY (codigoNomenclador, codigoEje) REFERENCES nomenclador (codigoNomenclador, codigoEje) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE evolucion (
@@ -133,8 +133,8 @@ CREATE TABLE evolucion (
 	legajoProfesional VARCHAR(15) NOT NULL,
 	idDiagnostico INT NOT NULL,
 	PRIMARY KEY (numeroEvolucion, dni,tipoDni),
-	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE RESTRICT ON DELETE RESTRICT,
-	FOREIGN KEY (legajoProfesional) REFERENCES profesional (legajo) ON UPDATE RESTRICT ON DELETE RESTRICT,
+	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE RESTRICT,
+	FOREIGN KEY (legajoProfesional) REFERENCES profesional (legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (idDiagnostico) REFERENCES diagnosticoMultiaxial (idDiagnostico) ON UPDATE CASCADE ON DELETE RESTRICT 
 );
 
@@ -142,11 +142,8 @@ CREATE TABLE turno (
 	idTurno INT PRIMARY KEY,
 	estado VARCHAR(30) NOT NULL CHECK (estado IN ('LIBRE', 'RESERVADO', 'CANCELADO', 'ATENDIDO')),
 	fechaHora TIMESTAMP NOT NULL CHECK (fechaHora >= '2010-01-01 00:00:00'),
-	dni VARCHAR(10),
-	tipoDni VARCHAR(15),
 	legajoProfesional VARCHAR(15) NOT NULL,
 	legajoAdmin VARCHAR(15),
-	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE SET NULL,
 	FOREIGN KEY (legajoProfesional) REFERENCES profesional (legajo) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (legajoAdmin) REFERENCES administrativo (legajo) ON UPDATE CASCADE ON DELETE SET NULL
 );
@@ -171,6 +168,7 @@ CREATE TABLE recetaMedica (
 	FOREIGN KEY (legajoPsiquiatra) REFERENCES psiquiatra (legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (numeroEvolucion, dni,tipoDni) REFERENCES evolucion (numeroEvolucion, dni,tipoDni) ON UPDATE CASCADE ON DELETE RESTRICT
 );
+);
 
 CREATE TABLE medicamento (
 	idMedicamento INT PRIMARY KEY,
@@ -184,7 +182,7 @@ CREATE TABLE stock (
 	cantidad INT NOT NULL,
 	idMedicamento INT,
 	PRIMARY KEY (fecha, idMedicamento),
-	FOREIGN KEY (idMedicamento) REFERENCES medicamento (idMedicamento) ON UPDATE CASCADE ON DELETE CASCADE
+	FOREIGN KEY (idMedicamento) REFERENCES medicamento (idMedicamento) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE entregaMedicamento(
@@ -210,7 +208,7 @@ CREATE TABLE dona (
 	dni VARCHAR(10) NOT NULL,
 	tipoDni VARCHAR(15) NOT NULL,
 	PRIMARY KEY (fechaDonado, idMedicamento),
-	FOREIGN KEY (idMedicamento) REFERENCES medicamento (idMedicamento) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (idMedicamento) REFERENCES medicamento (idMedicamento) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
@@ -233,4 +231,5 @@ CREATE TABLE sot (
 	legajoAcompaniante VARCHAR(15) NOT NULL,
 	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (legajoAcompaniante) REFERENCES acompanianteTerapeutico (legajo) ON UPDATE CASCADE ON DELETE RESTRICT
+);
 );
