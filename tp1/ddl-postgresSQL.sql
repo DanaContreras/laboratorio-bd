@@ -1,18 +1,40 @@
-/* TO-DO:
-	- ver tema de politicas si son adecuadas
-	- ver opciones de los estados
-*/
-/*DROP TABLE IF EXISTS personalClinico;
-DROP TABLE IF EXISTS administrativo;
-DROP TABLE IF EXISTS profesional;
+-- Eliminar vistas, tablas y dominios.
+DROP VIEW IF EXISTS turnoLocal2;
+DROP VIEW IF EXISTS turnoLocal;
+DROP VIEW IF EXISTS turnoCascade2;
+DROP VIEW IF EXISTS turnoCascade;
+
+DROP TABLE IF EXISTS sot;
+DROP TABLE IF EXISTS requiereDe;
+DROP TABLE IF EXISTS dona;
+DROP TABLE IF EXISTS entregaMedicamento;
+DROP TABLE IF EXISTS stock;
+DROP TABLE IF EXISTS medicamento;
+DROP TABLE IF EXISTS recetaMedica;
+DROP TABLE IF EXISTS solicita;
+DROP TABLE IF EXISTS registroBaja;
+DROP TABLE IF EXISTS asignado;
+DROP TABLE IF EXISTS turno;
+DROP TABLE IF EXISTS evolucion;
+DROP TABLE IF EXISTS contiene;
+DROP TABLE IF EXISTS nomenclador;
+DROP TABLE IF EXISTS recibe;
+DROP TABLE IF EXISTS diagnosticoMultiaxial;
+DROP TABLE IF EXISTS eje;
 DROP TABLE IF EXISTS acompanianteTerapeutico;
 DROP TABLE IF EXISTS enfermera;
 DROP TABLE IF EXISTS psicologo;
 DROP TABLE IF EXISTS psiquiatra;
-DROP TABLE IF EXISTS registroBaja;
+DROP TABLE IF EXISTS administrativo;
+DROP TABLE IF EXISTS profesional;
+DROP TABLE IF EXISTS personalClinico;
 DROP TABLE IF EXISTS cargo;
-DROP TABLE IF EXISTS asignado;
-*/
+DROP TABLE IF EXISTS paciente;
+DROP TABLE IF EXISTS tratamientoGravedad;
+
+DROP DOMAIN IF EXISTS estadoReceta;
+DROP DOMAIN IF EXISTS frecuenciaTratamiento;
+DROP DOMAIN IF EXISTS fechaHora;
 
 -- Creacion de dominios
 CREATE DOMAIN estadoReceta AS VARCHAR(20)
