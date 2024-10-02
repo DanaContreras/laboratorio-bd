@@ -1,5 +1,4 @@
 CREATE DATABASE LabBD_Maria;
-USE LabBD_Maria;
 
 CREATE TABLE personalClinico (
 	legajo VARCHAR(15) PRIMARY KEY,
@@ -45,11 +44,11 @@ CREATE TABLE psicologo (
 
 CREATE TABLE registroBaja (
 	idRegistroBaja INT PRIMARY KEY,
-	fechaHora TIMESTAMP NOT NULL CHECK (VALUE >= '2010-01-01 00:00:00'),
+	fechaHora TIMESTAMP NOT NULL CHECK (fechaHora >= '2010-01-01 00:00:00'),
 	motivo VARCHAR(100) NOT NULL,
 	legajoPersonal VARCHAR(15) NOT NULL,
 	legajoAdmin VARCHAR(15) NOT NULL,
-	IGN KEY (legajoPersonal) REFERENCES personalClinico (legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
+	FOREIGN KEY (legajoPersonal) REFERENCES personalClinico (legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (legajoAdmin) REFERENCES administrativo (legajo) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
@@ -168,7 +167,6 @@ CREATE TABLE recetaMedica (
 	FOREIGN KEY (legajoPsiquiatra) REFERENCES psiquiatra (legajo) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (numeroEvolucion, dni,tipoDni) REFERENCES evolucion (numeroEvolucion, dni,tipoDni) ON UPDATE CASCADE ON DELETE RESTRICT
 );
-);
 
 CREATE TABLE medicamento (
 	idMedicamento INT PRIMARY KEY,
@@ -187,7 +185,7 @@ CREATE TABLE stock (
 
 CREATE TABLE entregaMedicamento(
 	idEntrega INT PRIMARY KEY,
-	fechaHora TIMESTAMP NOT NULL CHECK (VALUE >= '2010-01-01 00:00:00'),
+	fechaHora TIMESTAMP NOT NULL CHECK (fechaHora >= '2010-01-01 00:00:00'),
 	dosis VARCHAR(15) NOT NULL,
 	legajoEnfermera VARCHAR(15) NOT NULL,
 	idReceta INT NOT NULL,
@@ -223,7 +221,7 @@ CREATE TABLE requiereDe(
 );
 
 CREATE TABLE sot (
-	fechaHora TIMESTAMP PRIMARY KEY CHECK (VALUE >= '2010-01-01 00:00:00'),
+	fechaHora TIMESTAMP PRIMARY KEY CHECK (fechaHora >= '2010-01-01 00:00:00'),
 	motivoLlamado VARCHAR(50),
 	observacionLlamado VARCHAR(500) NOT NULL,
 	dni VARCHAR(10) NOT NULL,
@@ -231,5 +229,4 @@ CREATE TABLE sot (
 	legajoAcompaniante VARCHAR(15) NOT NULL,
 	FOREIGN KEY (dni,tipoDni) REFERENCES paciente (dni,tipoDni) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (legajoAcompaniante) REFERENCES acompanianteTerapeutico (legajo) ON UPDATE CASCADE ON DELETE RESTRICT
-);
 );
