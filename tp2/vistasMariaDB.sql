@@ -1,8 +1,17 @@
 -- 1.a
-DROP VIEW TurnoLocal
+DROP VIEW IF EXISTS TurnoLocal
 
 CREATE VIEW TurnoLocal
 as SELECT *
 FROM turno t 
 WHERE t.fechaHora <= '2024-08-31'
 WITH LOCAL CHECK OPTION
+
+-- 1.b
+DROP VIEW IF EXISTS TurnoCascade
+
+CREATE VIEW TurnoCascade
+as SELECT *
+FROM turno t 
+WHERE t.fechaHora <= '2024-08-31'
+WITH CASCADED CHECK OPTION
