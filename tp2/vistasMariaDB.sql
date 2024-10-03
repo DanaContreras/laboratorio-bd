@@ -61,3 +61,21 @@ VALUES (107, 'RESERVADO', '2024-01-01', 'PSC009', 'ADM007');
 
 INSERT INTO TurnoCascade2 (idTurno, estado, fechaHora, legajoProfesional, legajoAdmin)
 VALUES (108, 'RESERVADO', '2024-09-04', 'PSC010', 'ADM008');
+
+  --Ejercicio 3
+CREATE VIEW TurnoProfesional
+as SELECT *
+FROM turno t INNER JOIN profesional p on t.legajoProfesional = p.legajo
+WITH CHECK OPTION
+
+  --Ejercicio 4
+CREATE VIEW TurnoProfesionalSinCheck
+as SELECT *
+FROM turno t INNER JOIN profesional p on t.legajoProfesional = p.legajo
+
+  --Ejercicio 5
+INSERT INTO TurnoProfesional (idTurno,estado, fechaHora, legajoProfesional, legajoAdmin,legajo,matricula)
+VALUES (110, 'RESERVADO', '2024-01-01', 'PSC009', 'ADM007', 'PSC009','MAT001234584');
+
+INSERT INTO TurnoProfesionalSinCheck (idTurno,estado, fechaHora, legajoProfesional, legajoAdmin,legajo,matricula)
+VALUES (111, 'RESERVADO', '2024-01-01', 'PSC009', 'ADM007', 'PSC009','MAT001234584');
