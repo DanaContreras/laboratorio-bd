@@ -1,5 +1,33 @@
 CREATE DATABASE LabBD_Maria;
 
+DROP TABLE IF EXISTS sot;
+DROP TABLE IF EXISTS requiereDe;
+DROP TABLE IF EXISTS dona;
+DROP TABLE IF EXISTS entregaMedicamento;
+DROP TABLE IF EXISTS stock;
+DROP TABLE IF EXISTS medicamento;
+DROP TABLE IF EXISTS recetaMedica;
+DROP TABLE IF EXISTS solicita;
+DROP TABLE IF EXISTS registroBaja;
+DROP TABLE IF EXISTS asignado;
+DROP TABLE IF EXISTS turno;
+DROP TABLE IF EXISTS evolucion;
+DROP TABLE IF EXISTS contiene;
+DROP TABLE IF EXISTS nomenclador;
+DROP TABLE IF EXISTS recibe;
+DROP TABLE IF EXISTS diagnosticoMultiaxial;
+DROP TABLE IF EXISTS eje;
+DROP TABLE IF EXISTS acompanianteTerapeutico;
+DROP TABLE IF EXISTS enfermera;
+DROP TABLE IF EXISTS psicologo;
+DROP TABLE IF EXISTS psiquiatra;
+DROP TABLE IF EXISTS administrativo;
+DROP TABLE IF EXISTS profesional;
+DROP TABLE IF EXISTS personalClinico;
+DROP TABLE IF EXISTS cargo;
+DROP TABLE IF EXISTS paciente;
+DROP TABLE IF EXISTS tratamientoGravedad;
+
 CREATE TABLE personalClinico (
 	legajo VARCHAR(15) PRIMARY KEY,
 	nombre VARCHAR(50),
