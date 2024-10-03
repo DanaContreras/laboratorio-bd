@@ -108,7 +108,7 @@ CREATE TABLE paciente (
 CREATE TABLE tratamientoGravedad (
 	idTratamiento INT PRIMARY KEY,
 	gravedad VARCHAR(30) NOT NULL CHECK (gravedad IN ('Grave intensivo', 'Grave medianamente intensivo', 'Ambulatorio')),
-	frecuencia VARCHAR(15) NOT NULL CHECK (frecuencia IN ('ASIGNADO', 'AUTORIZADO','NO AUTORIZADO'))
+	frecuencia VARCHAR(15) NOT NULL CHECK (frecuencia IN ('DIA COMPLETO', 'MEDIODIA', 'SEMANAL', 'QUINCENAL', 'MENSUAL'))
 );
 
 CREATE TABLE recibe (
