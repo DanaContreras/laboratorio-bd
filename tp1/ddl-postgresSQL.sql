@@ -232,9 +232,8 @@ CREATE TABLE stock (
 	FOREIGN KEY (idMedicamento) REFERENCES medicamento (idMedicamento) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
--- idEntrega es serial ya que no es referenciada en otras relaciones como clave foranea.
 CREATE TABLE entregaMedicamento(
-	idEntrega SERIAL PRIMARY KEY,
+	idEntrega INT PRIMARY KEY,
 	fechaHora fechaHora NOT NULL,
 	dosis VARCHAR(15) NOT NULL,
 	legajoEnfermera VARCHAR(15) NOT NULL,
