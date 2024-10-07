@@ -1,15 +1,29 @@
-/*
-Para eliminar todos los datos de las tablas:
-DO $$ 
-DECLARE
-    r RECORD;
-BEGIN
-    FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = 'public') 
-    LOOP
-        EXECUTE 'TRUNCATE TABLE ' || r.tablename || ' RESTART IDENTITY CASCADE';
-    END LOOP;
-END $$;
-*/
+DELETE FROM sot;
+DELETE FROM requiereDe;
+DELETE FROM entregaMedicamento;
+DELETE FROM stock;
+DELETE FROM medicamento;
+DELETE FROM recetaMedica;
+DELETE FROM solicita;
+DELETE FROM registroBaja;
+DELETE FROM asignado;
+DELETE FROM turno;
+DELETE FROM evolucion;
+DELETE FROM contiene;
+DELETE FROM nomenclador;
+DELETE FROM recibe;
+DELETE FROM diagnosticoMultiaxial;
+DELETE FROM eje;
+DELETE FROM acompanianteTerapeutico;
+DELETE FROM enfermera;
+DELETE FROM psicologo;
+DELETE FROM psiquiatra;
+DELETE FROM administrativo;
+DELETE FROM profesional;
+DELETE FROM personalClinico;
+DELETE FROM cargo;
+DELETE FROM paciente;
+DELETE FROM tratamientoGravedad;
 
 INSERT INTO paciente (dni, tipoDni, nombre, apellido, obraSocial, fechaNac, fechaIngreso, foto)
 VALUES 
