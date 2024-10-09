@@ -5,6 +5,15 @@ FROM turno
 WHERE fechaHora <= '2024-08-31 23:59:59'
 WITH LOCAL CHECK OPTION;
 
+CREATE VIEW turnoLocalSubconsulta AS
+SELECT t.*
+FROM turno
+WHERE turno.idTurno IN (
+	SELECT t.idTurno
+	FROM FROM turno t JOIN solicita s ON t.idTurno = s.idTurno
+	WHERE fechaHora <= '2024-08-31 23:59:59'
+);
+
 -- Ejercicio 1.b)
 CREATE VIEW turnoCascade AS
 SELECT *
