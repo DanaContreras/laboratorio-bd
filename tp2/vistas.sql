@@ -32,3 +32,29 @@ INSERT INTO turnoCascade (idTurno, estado, fechaHora, legajoProfesional, legajoA
 VALUES
 	(103, 'RESERVADO', '2019-01-01', 'PSC009', 'ADM007'),
 	(104, 'RESERVADO', '2024-09-04', 'PSC010', 'ADM008');
+
+--Ejercicio 1.c
+CREATE VIEW turnoLocal2 AS
+SELECT *
+FROM turnoLocal
+WHERE fechaHora >= '2024-01-01 00:00:00'
+WITH LOCAL CHECK OPTION;
+
+CREATE VIEW turnoLocal2Subconsulta AS
+SELECT *
+FROM turnoLocalSubconsulta
+WHERE fechaHora >= '2024-01-01 00:00:00'
+WITH LOCAL CHECK OPTION;
+
+--Ejercicio 1.d
+CREATE VIEW turnoCascade2 AS
+SELECT *
+FROM turnoCascade
+WHERE fechaHora >= '2024-01-01 00:00:00'
+WITH CASCADED CHECK OPTION;
+
+CREATE VIEW turnoCascade2Subconsulta AS
+SELECT *
+FROM turnoCascadeSubconsulta
+WHERE fechaHora >= '2024-01-01 00:00:00'
+WITH CASCADED CHECK OPTION;
