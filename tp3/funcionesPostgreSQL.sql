@@ -20,4 +20,4 @@ BEGIN
 	WHERE EXTRACT(MONTH FROM s.fecha) = 9 AND EXTRACT(YEAR FROM s.fecha) = 2024;
 END;
 $$
-Language plpgsql
+Language plpgsql;
