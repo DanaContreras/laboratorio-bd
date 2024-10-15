@@ -1,0 +1,7 @@
+-- Ejercicio 1
+CREATE OR REPLACE FUNCTION sumar_dos_numeros(a INT, b INT)
+RETURNS INT
+DETERMINISTIC
+BEGIN
+   RETURN a + b;
+END
