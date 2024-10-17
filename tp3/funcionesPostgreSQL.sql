@@ -10,18 +10,15 @@ LANGUAGE plpgsql;
 
 -- Ejercicio 2
 -- a)
-CREATE FUNCTION formatoStockSep2024 ()
-RETURNS TABLE(formato TEXT)
+CREATE FUNCTION formatoStockSep2024 (nombre VARCHAR, dosis INT, cantidad INT, fecha TIMESTAMP)
+RETURNS TEXT
 AS $$
 BEGIN
-	RETURN QUERY
-	SELECT 'El medicamento ' || m.nombre ||
-	', con dosis ' || m.dosis ||
-	' registró un stock de ' || s.cantidad ||
-	' unidades, el ' || TO_CHAR(s.fecha, 'DD-MM-YYYY') ||
-	' a las ' || TO_CHAR(s.fecha, 'HH24:MI:SS') || '.'
-	FROM medicamento m JOIN stock s ON m.idMedicamento = s.idMedicamento
-	WHERE EXTRACT(MONTH FROM s.fecha) = 9 AND EXTRACT(YEAR FROM s.fecha) = 2024;
+	RETURN 'El medicamento ' || nombre ||
+	', con dosis ' || dosis ||
+	' registró un stock de ' || cantidad ||
+	' unidades, el ' || TO_CHAR(fecha, 'DD-MM-YYYY') ||
+	' a las ' || TO_CHAR(fecha, 'HH24:MI:SS') || '.';
 END;
 $$
 Language plpgsql;
