@@ -19,6 +19,11 @@ WHERE EXTRACT(MONTH FROM fecha) = 9 AND EXTRACT(YEAR FROM fecha) = 2024;
 DROP TRIGGER IF EXISTS habilitarBorradoMedicamento ON medicamento;
 DROP FUNCTION IF EXISTS deleteRefMedicamento;
 
+-- Ejercicio e)
+-- los datos insertados en el ejercicio son eliminados en la ultima operacion (delete)
+DROP TRIGGER IF EXISTS registrarLogEntregaMedicamento ON entregaMedicamento;
+DROP FUNCTION IF EXISTS insertLog;
+
 
 
 
