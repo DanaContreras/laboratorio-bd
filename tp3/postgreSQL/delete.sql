@@ -24,7 +24,15 @@ DROP FUNCTION IF EXISTS deleteRefMedicamento;
 DROP TRIGGER IF EXISTS registrarLogEntregaMedicamento ON entregaMedicamento;
 DROP FUNCTION IF EXISTS insertLog;
 
+-------------------------------------------------------------------------------------------
 
+-- CURSORES
+
+-- Ejercicio 2)
+DROP FUNCTION IF EXISTS cancelarTurnosOct2024;
+
+DELETE FROM turno
+WHERE idTurno IN (20, 21, 22, 23, 24);
 
 
 
