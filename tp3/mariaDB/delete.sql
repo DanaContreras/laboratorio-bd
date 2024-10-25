@@ -17,6 +17,11 @@ DROP FUNCTION IF EXISTS formatoStockSep2024;
 DELETE FROM stock
 WHERE MONTH(fecha) = 9 AND YEAR(fecha) = 2024;
 
+-- c)
+-- los datos insertados en el ejercicio fueron borrados con el trigger.
+DROP TRIGGER IF EXISTS habilitarBorradoMedicamento;
+
+
 -- e)
 DROP TRIGGER IF EXISTS registrarLogEntregaMedicamento_insert;
 DROP TRIGGER IF EXISTS registrarLogEntregaMedicamento_delete;
