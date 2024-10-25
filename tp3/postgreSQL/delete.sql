@@ -24,6 +24,19 @@ DROP FUNCTION IF EXISTS deleteRefMedicamento;
 DROP TRIGGER IF EXISTS registrarLogEntregaMedicamento ON entregaMedicamento;
 DROP FUNCTION IF EXISTS insertLog;
 
+-- Ejercicio f)
+DROP TRIGGER IF EXISTS restriccion_registro_turno ON turno;
+DROP TRIGGER IF EXISTS validar_registro_turno;
+-- eliminacion de los datos de prueba utilizados para el inciso:
+DELETE FROM turno
+WHERE idTurno IN (30, 31, 32);
+
+DELETE FROM administrativo
+WHERE legajo IN ('ADM0011', 'PSC005');
+
+DELETE FROM personalClinico
+WHERE legajo = 'ADM0011';
+
 -------------------------------------------------------------------------------------------
 
 -- CURSORES
