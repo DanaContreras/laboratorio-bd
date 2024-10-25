@@ -29,6 +29,19 @@ DROP TRIGGER IF EXISTS registrarLogEntregaMedicamento_update;
 
 DROP TABLE IF EXISTS LOG_entregamedicamento;
 
+-- f)
+DROP TRIGGER IF EXISTS restriccion_registro_turno_insert;
+DROP TRIGGER IF EXISTS restriccion_registro_turno_update;
+-- eliminacion de los datos de prueba utilizados para el inciso:
+DELETE FROM turno
+WHERE idTurno IN (30, 31, 32);
+
+DELETE FROM administrativo
+WHERE legajo IN ('ADM0011', 'PSC005');
+
+DELETE FROM personalClinico
+WHERE legajo = 'ADM0011';
+
 ----------------------------------------------------------------------------------------
 
 -- CURSORES
