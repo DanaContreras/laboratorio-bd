@@ -27,6 +27,8 @@ DROP TRIGGER IF EXISTS registrarLogEntregaMedicamento_insert;
 DROP TRIGGER IF EXISTS registrarLogEntregaMedicamento_delete;
 DROP TRIGGER IF EXISTS registrarLogEntregaMedicamento_update;
 
+DROP TABLE IF EXISTS LOG_entregamedicamento;
+
 ----------------------------------------------------------------------------------------
 
 -- CURSORES
