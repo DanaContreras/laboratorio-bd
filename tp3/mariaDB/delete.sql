@@ -5,6 +5,15 @@
 -- a)
 DROP FUNCTION IF EXISTS sumar_dos_numeros;
 
+--e)
+DROP FUNCTION IF EXISTS antiguedad_persona;
+
+DELETE FROM asignado
+WHERE fecha = '2024-10-16' AND legajo = 'ADM002' AND nombreCargo = 'Coordinador Area Administrativa';
+
+DELETE FROM cargo
+WHERE nombreCargo = 'Coordinador Area Administrativa';
+
 ----------------------------------------------------------------------------------------
 
 -- PROCEDIMIENTOS Y TRIGGERS:
