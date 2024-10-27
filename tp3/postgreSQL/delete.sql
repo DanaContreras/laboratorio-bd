@@ -2,7 +2,9 @@
 
 -- Ejercicio 1
 DROP FUNCTION IF EXISTS sumar_dos_numeros;
-
+DROP FUNCTION IF EXISTS suma;
+DROP FUNCTION IF EXISTS test;
+DROP FUNCTION IF EXISTS foo;
 -- Ejercicio 2
 -- a)
 DROP FUNCTION IF EXISTS formatoStockSep2024;
@@ -10,14 +12,30 @@ DROP FUNCTION IF EXISTS formatoStockSep2024;
 DELETE FROM stock
 WHERE EXTRACT(MONTH FROM fecha) = 9 AND EXTRACT(YEAR FROM fecha) = 2024;
 
+-- e) 
+DROP FUNCTION IF EXISTS antiguedad_persona;
+
+DELETE FROM asignado
+WHERE fecha = '2024-10-16' AND legajo = 'ADM002' AND nombreCargo = 'Coordinador Area Administrativa';
+
+DELETE FROM cargo
+WHERE nombreCargo = 'Coordinador Area Administrativa';
+
 -------------------------------------------------------------------------------------------
 
 -- PROCEDIMIENTOS Y TRIGGERS
+
+-- Ejercicio a)
+ALTER TABLE administrativo
+DROP COLUMN cantidadcargos;
 
 -- Ejercicio c)
 -- los datos insertados en el ejercicio fueron borrados con el trigger.
 DROP TRIGGER IF EXISTS habilitarBorradoMedicamento ON medicamento;
 DROP FUNCTION IF EXISTS deleteRefMedicamento;
+
+-- Ejercicio d)
+DROP TABLE LOG_entregamedicamento;
 
 -- Ejercicio e)
 -- los datos insertados en el ejercicio son eliminados en la ultima operacion (delete)
