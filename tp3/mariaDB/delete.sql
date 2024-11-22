@@ -5,6 +5,10 @@
 -- a)
 DROP FUNCTION IF EXISTS sumar_dos_numeros;
 
+--b)
+DROP FUNCTION IF EXISTS multiplicar;
+
+-- Ejercicio 2
 --e)
 DROP FUNCTION IF EXISTS antiguedad_persona;
 
