@@ -27,6 +27,7 @@ db.recetaMedica.insertMany([
 // Obtener la receta médica
 const receta = db.recetaMedica.findOne({ idReceta: 1 });
 
+// COLECCION MEDICAMENTO
 const medicamentos = [
     {
         idMedicamento: 1,
