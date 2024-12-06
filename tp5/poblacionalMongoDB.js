@@ -139,5 +139,47 @@ db.turno.insertMany([
         administrativo: null, // ID de administrativo pendiente
         profesional: null, // ID de profesional pendiente
         paciente: db.pacientes.findOne({ dni: "87654321" })._id // Referencia al paciente Ana González
+    },
+    {
+        estado: "Cancelado",
+        fechaHora: new Date("2024-10-05T14:30:00"),
+        administrativo: null,
+        profesional: null,
+        paciente: db.pacientes.findOne({ dni: "12345678" })._id
+    },
+    {
+        estado: "Cancelado",
+        fechaHora: new Date("2022-10-05T14:30:00"),
+        administrativo: null,
+        profesional: null,
+        paciente: db.pacientes.findOne({ dni: "12345678" })._id
+    },
+    {
+        estado: "Cancelado",
+        fechaHora: new Date("2023-02-18T16:00:00"),
+        administrativo: null,
+        profesional: null,
+        paciente: db.pacientes.findOne({ dni: "87654321" })._id
+    },
+    {
+        estado: "Cancelado",
+        fechaHora: new Date("2021-08-15T10:00:00"),
+        administrativo: null,
+        profesional: null,
+        paciente: db.pacientes.findOne({ dni: "12345678" })._id
+    },
+    {
+        estado: "Cancelado",
+        fechaHora: new Date("2021-06-20T15:45:00"),
+        administrativo: null,
+        profesional: null,
+        paciente: db.pacientes.findOne({ dni: "87654321" })._id
+    },
+    {
+        estado: "Cancelado",
+        fechaHora: new Date("2021-09-10T08:30:00"),
+        administrativo: null,
+        profesional: null,
+        paciente: db.pacientes.findOne({ dni: "12345678" })._id
     }
 ]);
