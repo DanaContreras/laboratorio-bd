@@ -181,5 +181,68 @@ db.turno.insertMany([
         administrativo: null,
         profesional: null,
         paciente: db.pacientes.findOne({ dni: "12345678" })._id
+    },
+    {
+        estado: "Cancelado",
+        fechaHora: new Date("2020-09-10T08:30:00"),
+        administrativo: null,
+        profesional: null,
+        paciente: null
+    }
+]);
+
+//COLECCION PERSONAL CLINICO
+db.personal_clinico.insertMany([
+    {legajo: 'PSC003',
+        nombre: 'Clara',
+        apellido: 'Rodríguez',
+        contraseña: 'password789',
+        fechaNac: '1975-11-25',
+        fotoPerfil: 'https://example.com/fotoPerfilClara.jpg',
+        email: 'clara.rodriguez@example.com',
+        estado: 'ACTIVO',
+        registroBaja:{},
+        tipo:["profesional"],
+        profesional:{
+            matricula: 'MAT001234570',
+            tipoProfesional:["psicologo"],
+            turnosAtendidos:[]
+        }
+    },
+    {legajo: 'ACO123456',
+        nombre: 'Maria',
+        apellido: 'Martínez',
+        contraseña: 'password123',
+        fechaNac: '1985-05-15',
+        fotoPerfil: 'https://example.com/fotoPerfil.jpg',
+        email: 'ana.martinez@example.com',
+        estado: 'ACTIVO',
+        registroBaja:{},
+        tipo:["profesional"],
+        profesional:{
+            matricula: 'MAT123456789',
+            tipoProfesional:["acompañanteTerapeutico"],
+            turnosAtendidos:[],
+            acompañanteTerapeutico:{
+                SOTs: []}
+        }
+    },
+    {legajo: 'PSQ001',
+        nombre: 'Mario',
+        apellido: 'Sánchez',
+        contraseña: 'password456',
+        fechaNac: '2002-02-20',
+        fotoPerfil: 'https://example.com/fotoPerfilJavier.jpg',
+        email: 'javier.sanchez@example.com',
+        estado: 'ACTIVO',
+        registroBaja:{},
+        tipo:["profesional"],
+        profesional:{
+            matricula: 'MAT001234569',
+            tipoProfesional:["psiquiatra"],
+            turnosAtendidos:[],
+            psiquiatra:{
+                recetasMedicas: []}
+        }
     }
 ]);
